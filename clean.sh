@@ -1,5 +1,5 @@
 #!/bin/bash
-# author: denny
+# author: denny, 2011-1-18
 dir=$1
 find $dir -name "CMakeFiles" -exec rm -rf {} \;
 find $dir -name "CMakeCache.txt" -exec rm -rf {} \;
