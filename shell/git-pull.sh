@@ -4,14 +4,14 @@
 #author: denny, wuqifu@gmail.com
 #date: 2011-01-22
 
-SUBDIRS=`ls -d */ | grep -v 'bin' | grep -v 'lib' | grep -v 'include'`
-#SUBDIRS=gflags icethread icenetwork log4plus kittylog xmlcc scws
+SUBDIRS=`ls -d */ | grep -v 'bin'`
+#SUBDIRS=gflags icethread 
 
 do_pull()
 {
  for subdir in $SUBDIRS
  do
-  ( cd $subdir && git pull && cd ..) 
+  ( cd $subdir && git status && git pull && cd ..) 
  done
 }
 
