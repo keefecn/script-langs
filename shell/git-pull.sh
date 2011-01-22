@@ -11,7 +11,8 @@ do_pull()
 {
  for subdir in $SUBDIRS
  do
-  ( cd $subdir && git status && git pull && cd ..) 
+  #( cd $subdir; git pull ) 
+  ( cd $subdir; git status && git pull ) 
  done
 }
 
