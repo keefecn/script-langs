@@ -9,8 +9,9 @@ postdata=" ";
 host="http://192.168.0.225:81/Default.aspx";
 curl -d $postdata $host
 
-# Eg2: support multiple URLs.
-curl -O http://any.org/archive[1996-1999]/vol[1-4]/part{a,b,c}.html
+# Eg2: support multiple URLs. 
+# like: http://any.org/archive1998/vol1/partb/filecbb.txt
+curl -O http://any.org/archive[1996-1999]/vol[1-4]/part{a,b,c}/file[a-z:3].txt
 
 # Eg3: download photo
 curl -O  http://www.nengtong.net//uploads/allimg/110211/1-110211104[125-604].jpg
