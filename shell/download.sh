@@ -10,7 +10,7 @@ host="http://192.168.0.225:81/Default.aspx";
 curl -d $postdata $host
 
 # Eg2: support multiple URLs. 
-# like: http://any.org/archive1998/vol1/partb/filecbb.txt
+# like: http://any.org/archive1998/vol1/partb/filea.txt  [:N] --specify step counter for the ranges
 curl -O http://any.org/archive[1996-1999]/vol[1-4]/part{a,b,c}/file[a-z:3].txt
 
 # Eg3: download photo

@@ -4,7 +4,7 @@
 #! /bin/bash
 
 # cpu.sh
-# tools: mpstat
+# tools: sar, mpstat
 idle=`/usr/bin/mpstat 1 1 | /bin/grep Average | awk '{print $9}'`
 used=`echo "100 - $idle" | /usr/bin/bc -l -s` 
 echo $used 
