@@ -27,3 +27,40 @@ do
         fi  
         sleep 5;
 done;
+
+
+# method 2
+# brief: crontab -l
+# min hour  day month week   command
+*/2 * * * * /home/jb-qfwu/backup/monitor.sh 1>/dev/null 2>&1
+
+#!/bin/bash
+# monitor.sh
+PROC_NAME="searchd"
+pidnum=$(ps -ef |grep -v "grep" | grep $PROC_NAME |wc -l) 
+echo "pidnum=$pidnum"
+
+ddate=`date +%Y-%m`
+dir=/home/jb-qfwu/git/bin/debug
+LOG=$dir/searchd_$ddate.log
+
+restartTime=`date '+%F %T'`;
+if (( $pidnum > 0 )) 
+then
+        echo "$restartTime $PROC_NAME is ok."  >>$LOG 1>/dev/null 2>&1
+        echo "$restartTime $PROC_NAME is ok.";
+else
+        echo "$restartTime $PROC_NAME is down!!! and restart it now......"  >>$LOG 2>&1
+        echo "$restartTime $PROC_NAME is down!!! and restart it now......" 
+        cd $dir 
+        ./start.sh & 1>/dev/null 2>&1
+fi
+
+#pid=`ps -ef | grep $PROC_NAME |grep -v "grep"`
+#pid=`pgrep $PROC_NAME`
+#ret=$?
+#ddate=`date +%Y-%m-%d`
+
+#if [ "$pidnum" -lt "2" ]; 
+#if [[ "$ret" -eq "0" ]]; 
+#if [ -n "$pid" ]; 
