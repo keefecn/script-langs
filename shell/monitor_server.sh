@@ -13,16 +13,17 @@ EMAIL_NAME=wuqifu@gmail.com
 
 for(( i=0; ; ++i ))
 do
+        #pid=$(ps -ef | grep $PROC_NAME |grep -v grep| awk '{print $2}' | head -1) 
         pid=`pgrep $PROC_NAME`
-        if [ "$pid"  ]; then
-                echo "["$i"]$PROC_NAME ok...." >/tmp/monitor_server.tmp
-        else
+        if [ -z $pid  ]; then
+		# no pid
                 echo "$PROC_NAME is down!!! and restart it now......"  >$LOG 2>&1
                 $START_SCRIPT >>$LOG 2>&1
                 restartTime=`date '+%F %T'` ;
                 echo "TIME: $restartTime" >>$LOG 2>&1
                 mail -s "$PROC_NAME Alert"  $EMAIL_NAME < $LOG
-                #TIME: $restartTime
+        else
+                echo "["$i"]$PROC_NAME ok...." >/tmp/monitor_server.tmp
 #mailtmp
         fi  
         sleep 5;
