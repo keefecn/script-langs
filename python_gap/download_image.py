@@ -8,8 +8,8 @@
 
 from sgmllib import SGMLParser
 import urllib, urllib2
-import sys
-import os
+import sys, os
+import threading
 
 '''
 @note: inherti from SGMLParser
@@ -42,6 +42,7 @@ class URLListener(SGMLParser):
 
 
 '''
+@name: getUrls
 @args urlseed: a listpage seed
 @return list of url
 '''
@@ -72,6 +73,11 @@ def getImageUrls(urlseed):
 		if parser.imgs[i][0:4] != 'http':
 			parser.imgs[i] = path+'/'+parser.imgs[i]
 	return parser.imgs
+
+def getNextPageUrls(urlseed):
+    # pnext=re.compile("<a href=([^>]*?)>next</a>")
+    return
+
 
 '''
 @args urlist: list of url
@@ -107,6 +113,11 @@ def downloadChannel(urllist):
 	fp.close()
 	f.close()
 
+'''
+@args urlist: list of url
+@return
+@note: show download progress 
+'''
 def downloadChannel_progress(urllist):
     def reporthook(block_count, block_size, file_size):
         # unget remote file size
@@ -129,34 +140,63 @@ def downloadChannel_progress(urllist):
 	except Exception,e:
 		print url,e
 
-class downloadThread(Thread):
-	def __init__(self, urllist)
-		Thread.__init__(self)
-		slef.urls = urllist
-	def run(self):
-	
+class downloadThread(threading.Thread):
+    import Queue
+    import threading, thread
+
+    __taskQueue = Queue.Queue()
+    def __init__(self, urllist, workid):
+            threading.Thread.__init__(self)
+            for url in urllist:
+                __taskQueue.put(url)
+            size = __taskQueue.qsize()
+            print 'taskqueue size:',size
+
+    def run(self):
+            while True:
+                url = urls.get()
+                filename = url.split('/')[-1]
+                fp = file(filename, 'wb')	
+                htmlSource = urllib.urlopen(url).read()
+                fp.write(htmlSource)
+                fp.close()
 
 def downloadChannel_multithread(urllist):
-	def download(url):
-		filename = url.split('/')[-1]
-		fp = file(filename, 'wb')	
-		htmlSource = urllib.urlopen(url).read()
-		fp.write(htmlSource)
-		fp.close()
+    import Queue
+    import threading, thread
+    import time
 
-	import threading
-	task_threads = []
-	count = 1
-	for url in urllist:
-		t = threading.Thread(target=download,args=(url,))
-		count = count+1
+    def download(taskQueue):
+        while True:
+            url = __taskQueue.get()
+            print url
+            __taskQueue.task_done()
+            filename = url.split('/')[-1]
+            fp = file(filename, 'wb')	
+            htmlSource = urllib.urlopen(url).read()
+            fp.write(htmlSource)
+            fp.close()
+
+    # queue: threadsafe container
+    __taskQueue = Queue.Queue()
+    for url in urllist:
+        __taskQueue.put(url)
+    size = __taskQueue.qsize()
+    print 'taskqueue size:',size
+
+    threadnum = 20
+    task_threads = []
+    for i in range(threadnum): 
+		#t = thread.start_new_thread(target=download,args=(__taskQueue, (i,))
+		t = threading.Thread(target=download,args=(__taskQueue,))
+		#t = downloadThread(__taskQueue, i)
 		task_threads.append(t)
 
-	for task in task_threads:
-		task.start()	
+    for task in task_threads:
+        task.start()		
 	# wait thread end
-	for task in task_threads:
-		task.join()		
+    for task in task_threads:
+        task.join()		
 
 
 def is_img(url):
@@ -215,15 +255,33 @@ def depth(url,dep,ospath):
 		return 0
 	return 1
 
+
 if __name__ == '__main__':
 	#imglenth = 1           
 	#num=0
 	#depth('http://www.tudou.com/',2, "E:\img\\")   
 
 	#pagelist="http://www.bdwm.net/bbs/bbstcon.php?board=PKU_ShiJia&threadid=12550530"
+	#pagelist="http://www.oaixs.org/files/article/html/4/4289/index.html"
 	pagelist = sys.argv[1]
 	urls = getUrls(pagelist)
 	print 'urls size:', len(urls)
 	#downloadChannel(urls)
 	downloadChannel_multithread(urls)
 
+
+threadnum = 20
+lineidx = 0
+def fetch_th(id):
+    global lineidx
+    while lineidx < len(lines):
+        #linemutex.acquire()
+        url = lines[lineidx]
+        lineidx+=1
+        #linemutex.release()
+
+if __name__ == '__multithread_main__':
+    filelist = 'filelist'
+    if len(sys.argv) >=2:
+        filelist = sys.argv[1]
+    lines = open(filelist).readlines()
