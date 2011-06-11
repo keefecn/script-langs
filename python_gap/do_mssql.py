@@ -10,12 +10,12 @@ name="./tuishi/tuishi"+str+".xml"
 fp=open(name, "w")
 fp.write('F_ID |F_DATE |F_ZP_DATE |F_ZHJYRQ |F_UPDATE_TIME|\n');
 for d in mssql_cur.fetchall():
-	id= '%s' %d[0]
-	id=id.strip();
-	fdate='%d' %d[1]
-	fzpdate='%d' %d[2]
-	fzhjyrq='%s' %d[3]
-	fupdate='%s' %d[4]
-	fp.write(id+'|'+fdate+'|'+fzpdate+'|'+fzhjyrq+'|'+fupdate+'|\n')
+    id= '%s' %d[0]
+    id=id.strip();
+    fdate='%d' %d[1]
+    fzpdate='%d' %d[2]
+    fzhjyrq='%s' %d[3]
+    fupdate='%s' %d[4]
+    fp.write(id+'|'+fdate+'|'+fzpdate+'|'+fzhjyrq+'|'+fupdate+'|\n')
 fp.close()
 mssql_con.close()

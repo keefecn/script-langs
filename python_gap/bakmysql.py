@@ -23,14 +23,14 @@ def backupSQL(start, end):
             sql = 'SELECT id, name,sid,url,pubtime,author,abstract ,source, type,ctime,img,maintype,topic FROM ' + table1 + ' WHERE id=' + str(id)
             #sql = 'SELECT id, name FROM' + table1 +' WHERE id=' + str(id)
             cur = conn1.cursor()
-            cur.execute(sql) 
+            cur.execute(sql)
             row = cur.fetchone()
             rownum = len(row);
             #print 'rownum', rownum
             print 'id:', id
-        except Exception, e:                
+        except Exception, e:
             print 'db select error ', e
-            continue   
+            continue
 
         try:
             # insert data to newsbak
@@ -44,12 +44,12 @@ def backupSQL(start, end):
             cur2.execute(sql, param)
             cur2.close()
             cur.close()
-        except Exception, e:                
+        except Exception, e:
             print 'db insert error ', e
-            pass   
-            
-    conn2.commit()             
-    conn1.close()             
+            pass
+
+    conn2.commit()
+    conn1.close()
     conn2.close()
 
 

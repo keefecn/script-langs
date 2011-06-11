@@ -166,8 +166,8 @@ class MainHandler(webapp.RequestHandler):
         else:
             self.response.out.write(resp.content)
 
-        # log
-        #logAccess(netloc, self.request.remote_addr)
+    # log
+    #logAccess(netloc, self.request.remote_addr)
 
     def get(self):
         self.response.headers['Content-Type'] = 'text/html; charset=utf-8'

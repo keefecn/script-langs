@@ -20,11 +20,11 @@ def download(url, filename):
                 print '100%'
             else:
                 print 'progress %d%%' % (percentage)
- 
+
     filehandler, m = \
                 urllib.urlretrieve(url, filename, reporthook=reporthook)
     print 'download finish'
- 
+
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print 'usage: %s url filename' % sys.argv[0]

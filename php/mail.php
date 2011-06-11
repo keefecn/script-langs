@@ -8,4 +8,4 @@ $body = "great denny, do u good at and do more.";
 $mailsend = mail("$address", "$Subject", "$body", "$headers");
 print("$mailsend");
 ?>
-      
+
