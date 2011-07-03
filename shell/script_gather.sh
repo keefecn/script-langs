@@ -31,6 +31,10 @@ find / -type f -size 0 -exec ls -l {} \;
 find -iname "*.cpp" |xargs grep "setLinger"
 find -iname "*.cpp" -exec grep "setLinger" {} \;
 grep -rl "setLinger" .
+## Eg: replace str in some file, oldstr-->newstr 
+sed -i "s/oldstr/newstr/g" `grep "newstr" -rl dirname`
+grep "oldstr" -rl dirname | xargs sed -i "s/oldstr/newstr/g" 
+find -name 'filename' | xargs perl -pi -e 's|oldstr|newstr|g'
 
 ## Eg: find exclude directory: -path [path] -prune
 find . -path ./201008 -prune -o -iname "stockInfo???.dat" |xargs rm
