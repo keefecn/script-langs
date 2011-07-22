@@ -1,9 +1,12 @@
+#! /usr/bin/python
+# coding=utf-8
 '''
 @filename: download.py
 @author: Denny
 @date: 2010-3-30 2011-5-16
-@note:  -*- coding: utf-8 -*-
-    eg: python download.py http://nonie.1ting.com:9092/zzzzzmp3/2011eMay/18E/18zhangliangying/01.wma 'zhan.wma'
+@note:  
+    usage: python download.py [url] [filename]
+    Eg: python download.py  http://nonie.1ting.com:9092/zzzzzmp3/2011eMay/18E/18zhangliangying/01.wma 'zhan.wma'
 '''
 
 import urllib
