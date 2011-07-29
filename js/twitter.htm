@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="Content-Language" content="zh-CN" />
+	<title>Twitter Friends Manager</title>
+</head>
+
+<body>
+
+<h1>Twitter Friends Manager</h1>
+
+power by williamlong <br/><br/>
+Twitter Username:<input type="text" id="username" name="username"> , Page:<input type="text" id="page" name="page" value="1" size="2"> <input type="button" value="Submit" onclick="JavaScript:loadFriend();">
+
+<div id="userload"></div>
+
+ <script language="JavaScript">
+ <!--
+
+function loadFriend(){
+
+strName = document.getElementById("username").value;
+strPage = document.getElementById("page").value;
+httpGetHtml = httpGet ("http://twitter.com/statuses/friends.xml","GET","page=" + strPage + "&screen_name=" + strName);
+
+var xml = new ActiveXObject("Msxml2.DOMDocument");
+bResult = xml.loadXML(httpGetHtml);
+var root = xml.documentElement;
+var node;
+for (i=1;i<=root.childNodes.length;i++) {
+    node = root.childNodes.item(i);
+    if (node!=null) {
+        node2 = node.childNodes.item(1);
+        name = node2.nodeTypedValue;
+        node2 = node.childNodes.item(2);
+        id = node2.nodeTypedValue;
+        node2 = node.childNodes.item(8);
+        followers = node2.nodeTypedValue;
+        node2 = node.childNodes.item(21);
+        statuses = node2.nodeTypedValue;
+        url="<form action='http://twitter.com/friendships/destroy.xml?screen_name="+id+"' method='post' target='_blank'>";
+        url2=" - <input type='submit' value='del'></form> <br/>";
+		document.getElementById("userload").innerHTML=document.getElementById("userload").innerHTML+url + "id:" + id + " , name:" + name + " , followers:" + followers + " , updates:" + statuses + url2;
+        //document.write (url + "id:" + id + " , name:" + name + " , followers:" + followers + " , statuses:" + statuses + url2);
+    }
+}
+
+}
+
+function getXMLHTTPRequest(){
+    if (XMLHttpRequest)    {
+        return new XMLHttpRequest();
+    } else {
+        try{
+            return new ActiveXObject('Msxml2.XMLHTTP');
+        }catch(e){
+            return new ActiveXObject('Microsoft.XMLHTTP');
+        }
+    }
+}
+
+function httpGet(url, method, data) {
+    var xmlhttp;
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    xmlhttp.open (method, url + "?" + data, false);
+    xmlhttp.setRequestHeader ("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xmlhttp.setRequestHeader ("Content-Length", data.length);
+    xmlhttp.send (null);
+	if (xmlhttp.Status = 200) return xmlhttp.responseText;
+}
+
+function httpPost(url, method, data) {
+    var xmlhttp;
+	xmlhttp = new XMLHttpRequest();
+    xmlhttp.open (method, url, false);
+    xmlhttp.setRequestHeader ("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xmlhttp.setRequestHeader ("Content-Length", data.length);
+    xmlhttp.send (data);
+	if (xmlhttp.Status = 200) return xmlhttp.responseText;
+}
+
+function httpPut(url, method, data) {
+    var xmlhttp;
+	xmlhttp = new XMLHttpRequest();
+    xmlhttp.open (method, url, false);
+    xmlhttp.setRequestHeader ("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xmlhttp.setRequestHeader ("Content-Length", data.length);
+    xmlhttp.send (data);
+	if (xmlhttp.Status = 200) return xmlhttp.responseText;
+}
+
+function httpDelete(url, method, data) {
+    var xmlhttp;
+	xmlhttp = new XMLHttpRequest();
+    xmlhttp.open (method, url + "?" + data, false);
+    xmlhttp.setRequestHeader ("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xmlhttp.setRequestHeader ("Content-Length", data.length);
+    xmlhttp.send (null);
+	if (xmlhttp.Status = 200) return xmlhttp.responseText;
+}
+
+ //-->
+ </script>
+
+</body>
+</html>
