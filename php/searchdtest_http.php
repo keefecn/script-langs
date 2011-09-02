@@ -4,6 +4,8 @@
 
 //// method 1: (PHP 4 >= 4.1.0, PHP 5) phpsocket_create, socket_connect, socket_set_option, socket_write, socket_recv, socket_close
 //// method 2: (PHP 4, PHP 5) fsockopen fwrite fgets fclose
+$FSFlag = 1;
+
 function microtime_float()
 {
     list($usec, $sec) = explode(" ", microtime());
@@ -11,9 +13,8 @@ function microtime_float()
 }
 
 function get_socket( $host, $port )
-{
+{   // inner function to call global variable: global
     global $FSFlag;
-    $FSFlag = 1;
     printf("HOST = %s, PORT = %d ", $host, $port );
     if ( $FSFlag == 1) {
         $timeout = 7;

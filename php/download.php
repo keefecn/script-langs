@@ -1,4 +1,14 @@
 <?php
+/**
+@author: denny
+@date: 2011-8-23
+@function: file_get_contents, curl, fopen/fread, fsockopen/fwrite
+@library: 
+    simple_html_dom.php 
+    Snoopy.class.php  :fetch() fetchtext() fetchlinks() 
+@note: 
+**/
+
 ini_set("max_execution_time", 2);
 
 //brief:  download url
