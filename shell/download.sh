@@ -14,7 +14,7 @@ curl -d $postdata $host
 curl -O http://any.org/archive[1996-1999]/vol[1-4]/part{a,b,c}/file[a-z:3].txt
 curl -o #2_#1.jpg http://cgi2.tky.3web.ne.jp/~{zzh,nick}/[001-201].JPG
 
-# Eg3: download photo
+# Eg3: download photos
 curl -O  http://www.nengtong.net//uploads/allimg/110211/1-110211104[125-604].jpg
 find . -size +20k -exec mv {} photo \;
 
