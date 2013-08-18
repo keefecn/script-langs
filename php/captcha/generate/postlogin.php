@@ -4,10 +4,14 @@ include ('Valite.php');
 function request_by_curl($remote_server, $post_string)
 {
     $ch = curl_init();
+//    curl_setopt($ch, CURLOPT_POST, 1);  
+//    curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_URL, $remote_server);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, 'mypost=' . $post_string);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_USERAGENT, "Jimmy's CURL Example beta");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_string);
+    //为了支持cookie 
+    curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
     $data = curl_exec($ch);
     curl_close($ch);
     return $data;
@@ -19,17 +23,19 @@ $valite = new Valite();
 //$valite->getHec();
 
 //test2: remote image
-$valite->getRemoteImage();
-$code = $valite->run();
+$img_url = "http://localhost/captcha/generate/checkcode.php";
+$valite->getRemoteImage($img_url);
 
-//test3: login
+//test: login
+$code = $valite->run();
 $remote = "http://localhost/captcha/generate/login.php";
-$checkcode = $code;
-$post_str = 'check=$checkcode';
+$post_str = "check=$code";
+// curl -d "check=000" http://localhost/captcha/generate/login.php
 $data = request_by_curl($remote, $post_str);
 echo $data;
+echo $post_str;
 
-print_r($code);
+//print_r($code);
 //echo "\n";
 
 

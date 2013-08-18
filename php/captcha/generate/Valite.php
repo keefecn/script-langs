@@ -1,4 +1,4 @@
-p<?php
+<?php
 
 //验证码识别的步骤: 取出字模(建立特征库,如图片数字1-9),二值化(图片中验证码部分为1,背景为0),计算特征,对照样本.
 //定义图形中字模的长宽及边距
@@ -43,8 +43,8 @@ class Valite
        return $res;
     }
 
-    public function getRemoteImage(){
-        $url = "http://localhost/php/gen/checkcode.php";
+    public function getRemoteImage($url){
+        
         if(empty($url)){
 	        echo "没有图片";
 	        die;
@@ -64,8 +64,8 @@ class Valite
 
         $size = getimagesize($url);
         $data = array();
-        print_r($size);
-        print_r($data);
+        //print_r($size);
+        //print_r($data);
         for ($i=0; $i < $size[1]; ++$i)
         {
             for ($j=0; $j < $size[0]; ++$j)
@@ -169,7 +169,7 @@ class Valite
         }
     }
     public function __construct()
-    {
+    {   
         //数字的二值化 1-9
         $this->Keys = array(
                           '0'=>'000111000011111110011000110110000011110000011110000011110000011110000011110000011110000011011000110011111110000111000',
