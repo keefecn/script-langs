@@ -1,7 +1,10 @@
 <?php 
-// PHP POST数据的三种方法
-// php有三种方法可以post数据,分别为Curl、socket、file_get_contents:
-
+/**
+@beief: PHP POST数据的三种方法: 分别为Curl、socket、file_get_contents:
+@author: denny
+@date: 2013-08-28
+@note: 
+**/
 
 /**
  * Socket版本
