@@ -59,7 +59,6 @@ function request_by_curl($remote_server, $post_string)
     //为了支持cookie 
     curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
     //curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //curl_setopt($ch, CURLOPT_USERAGENT, "Jimmy's CURL Example beta");
     $data = curl_exec($ch);
     curl_close($ch);
     return $data;

@@ -1,4 +1,7 @@
-p<?php
+<?php
+
+/* Report all errors except E_NOTICE */
+error_reporting(E_ALL^E_NOTICE);
 
 //验证码识别的步骤: 取出字模(建立特征库,如图片数字1-9),二值化(图片中验证码部分为1,背景为0),计算特征,对照样本.
 //定义图形中字模的长宽及边距
@@ -23,7 +26,7 @@ class Valite
         return $DataArray;
     }
 
-    //根据图片后缀名来调用不同的图片读取函数, add by Denny, 20130814
+    // 根据图片后缀名来调用不同的图片读取函数, add by Denny, 20130814
     public function getImage($file_name)
     {
         $extend="";
@@ -41,6 +44,21 @@ class Valite
             }
         }// end if($pt)
        return $img;
+    }
+
+    // file_name 为图片全路径
+    // TODO: PHP Parse error:  syntax error, unexpected T_OBJECT_OPERATOR 
+    public function getImage2($file_name)
+    {
+        $type = exif_imagetype($file_name);
+        if($type==IMAGETYPE_GIF){
+	        $image = imagecreatefromgif($file_name);
+        }elseif($type==IMAGETYPE_JPEG){
+	        $image = imagecreatefromjpeg($file_name);
+        }elseif($type==IMAGETYPE_PNG){
+	        $image = imagecreatefrompng($file_name);
+        }
+       return $image;
     }
 
     // add by Denny
@@ -76,8 +94,8 @@ class Valite
                 //排除干扰素
                 if ($rgbarray['red'] < 125 || $rgbarray['green']<125
                         || $rgbarray['blue'] < 125)
-                {
-                    $data[$i][$j]=1;
+                { // 退色,　1 black; 0: white
+                    $data[$i][$j]=1;  
                 } else {
                     $data[$i][$j]=0;
                 }
@@ -91,9 +109,22 @@ class Valite
     public function getHec()
     {
         //JPEG图像
-        $image = imagecreatefromjpeg($this->ImagePath);
-        //$image = this->getRemoteImage();
+        //$image = imagecreatefromjpeg($this->ImagePath);
+        //$image = this->getImage2($this->ImagePath);
+        $type = exif_imagetype($this->ImagePath);
+        if($type==IMAGETYPE_GIF){
+	        $image = imagecreatefromgif($this->ImagePath);
+        }elseif($type==IMAGETYPE_JPEG){
+	        $image = imagecreatefromjpeg($this->ImagePath);
+        }elseif($type==IMAGETYPE_PNG){
+	        $image = imagecreatefrompng($this->ImagePath);
+        }
+        //TEST
         $size = getimagesize($this->ImagePath);
+        if ($size <=0 ){
+            die();        
+        }
+        //print_r($size);        
         $data = array();
         for ($i=0; $i < $size[1]; ++$i)
         {
@@ -101,7 +132,7 @@ class Valite
             {
                 $rgb = imagecolorat($image,$j,$i);
                 $rgbarray = imagecolorsforindex($image, $rgb);
-                //排除干扰素
+                //排除干扰素,　二值化
                 if ($rgbarray['red'] < 125 || $rgbarray['green']<125
                         || $rgbarray['blue'] < 125)
                 {
@@ -118,7 +149,7 @@ class Valite
     public function run()
     {
         $result="";
-        // 查找4个数字，将值存入$date[]
+        // 查找4个数字，将值存入$date[], 按示例模板切割
         $data = array("","","","");
         for ($i=0; $i<4; ++$i)
         {
