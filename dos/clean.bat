@@ -1,5 +1,6 @@
 @echo off
 
+:: 注释,使用::或rem
 echo 清空IE临时文件目录...
 del /f /s /q "%userprofile%\Local Settings\Temporary Internet Files\*.*"
 del /f /s /q "%userprofile%\Local Settings\Temp\*.*"
