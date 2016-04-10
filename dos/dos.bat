@@ -15,11 +15,12 @@
 ::	FOR /D 目录;  FOR /R 目录树;  FOR /L 数字序列; FOR /F 分析命令的输出
 ::  @@IF: IF "参数"=="字符串";  IF EXIST 文件名；IF ERRORLEVEL / if not errorlevel 数字
 ::  4) 路径是空格，使用引号圈起
-:: @REFER: help for, http://www.jb51.net/article/52744.htm
+:: @REFER: help FOR, http://www.jb51.net/article/52744.htm
 ::
 :: This is a free shell script under GNU GPL version 2.0 or above
 :: Copyright (C) 2006 Denny
 :: ----------------------------------------------------------------------
+@ECHO OFF
 :: 变量扩展
 SETlocal enabledelayedexpansion
 
@@ -37,8 +38,8 @@ SETlocal enabledelayedexpansion
 用途：扫描192.168.0.x段的全部1到65535段口 
 使用范围：端口扫描，不再需要工具
 命令：
-for /l %a in (1,1,254) DO (
- FOR /l %b in (1,1,65535) DO start /low /min telnet 192.168.0.%a %b 
+FOR /L %a in (1,1,254) DO (
+ FOR /L %b in (1,1,65535) DO start /low /min telnet 192.168.0.%a %b 
 )
 
 4)暴力网络连接主机
