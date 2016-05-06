@@ -14,6 +14,12 @@
 sed  -i '/^$/d'  filename
 cat $1 |grep ^[^$]
 
+### stat code lines 统计行数
+# find file backfix: 查找后缀名为h, c, cpp的文件
+find . -regex '.*\.\(c\|h\|min\|cpp\|py\|php\)'  | xargs wc -l
+# trim space line
+find /a -name "*.c" |xargs cat|grep -v ^$|wc -l
+
 ###1: find file 
 # syntax: ind pathname -options [-print -exec -ok ...]
 # syntax: grep [options] PATTERN [FILE...]
@@ -56,6 +62,7 @@ cut -d: -f1 < /etc/passwd | sort | xargs echo
 
 ## Eg:  {}=[replacestr, any string]
 find . -name "*.txt"|xargs -I {} cp {} {}.bak
+
 
 ######## some usefull tools #############################
 #1 kill process by name

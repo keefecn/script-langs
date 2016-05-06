@@ -6,7 +6,7 @@
 @date: 2010-3-30 2011-5-16
 @note:  
     usage: python download.py [url] [filename]
-    Eg: python download.py  http://nonie.1ting.com:9092/zzzzzmp3/2011eMay/18E/18zhangliangying/01.wma 'zhan.wma'
+    Eg: python download.py  http://www.miit.gov.cn/n11293472/n11293832/n11293907/n11368223/n15668993.files/n15668841.pdf 'zhan.pdf'
 '''
 
 import urllib
