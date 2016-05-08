@@ -11,10 +11,13 @@ do_pull()
 {
  for subdir in $SUBDIRS
  do
+  echo ''
+  echo '--'$subdir
   #( cd $subdir; git pull ) 
   ( cd $subdir; git status && git pull ) 
  done
+  echo ''
 }
 
 do_pull
-
+echo 'git pull ok'
