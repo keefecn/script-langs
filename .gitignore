@@ -1,0 +1,8 @@
+# common
+log
+
+# python
+*.pyc
+
+# c/c++
+*.o
