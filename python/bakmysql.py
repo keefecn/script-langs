@@ -11,8 +11,8 @@ import MySQLdb
 
 # only function,not use class
 def backupSQL(start, end):
-    conn1 = MySQLdb.connect("192.168.114.6", "news", "keiejuT3iLld", "news")
-    conn2 = MySQLdb.connect("192.168.114.146", "news", "keiejuT3iLld", "news")
+    conn1 = MySQLdb.connect("192.168.114.6", "user", "pwd", "db")
+    conn2 = MySQLdb.connect("192.168.114.146", "user", "pwd", "db")
     table1 = 'news'
     table2 = 'news'
 
@@ -39,7 +39,7 @@ def backupSQL(start, end):
             param = []
             sql = 'INSERT INTO ' + table2 + ' (id, name,sid,url,pubtime,author,abstract ,source, type,ctime,img,maintype,topic)  VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'
             for result in row:
-                #if result!= None:      
+                #if result!= None:
                 param.append(result)
 
             cur2.execute(sql, param)
