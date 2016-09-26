@@ -187,12 +187,12 @@ class MainHandler(webapp.RequestHandler):
             <tr><td align="center"><hr></td></tr>
 
             <tr><td align="center">
-                GAppProxy是一个开源的HTTP Proxy软件,使用Python编写,运行于Google App Engine平台上. 
+                GAppProxy是一个开源的HTTP Proxy软件,使用Python编写,运行于Google App Engine平台上.
             </td></tr>
             <tr><td align="center"><hr></td></tr>
 
             <tr><td align="center">
-                更多相关介绍,请参考<a href="http://gappproxy.googlecode.com/">GAppProxy项目主页</a>. 
+                更多相关介绍,请参考<a href="http://gappproxy.googlecode.com/">GAppProxy项目主页</a>.
             </td></tr>
             <tr><td align="center"><hr></td></tr>
 

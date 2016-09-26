@@ -20,6 +20,6 @@ def debug_demo(val):
         print (val - 6500) * 0.20 + (6500-3500) * 0.10 + (3500-1600) * 0.05
 
 
-#~def debug_demo                
+#~def debug_demo
 if __name__ == "__main__":
     debug_demo(4500)

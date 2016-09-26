@@ -319,7 +319,7 @@ class monitor_main:
             word = arr.split(",")
 
             #####################################################
-            # add digital group symbol in the digital number. 
+            # add digital group symbol in the digital number.
             # 1 gourp every 1000 times
             #####################################################
 
