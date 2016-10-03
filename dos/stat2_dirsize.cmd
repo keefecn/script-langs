@@ -1,6 +1,6 @@
 :: 
-:: DESC: Í³¼Æ´Î¼¶Ä¿Â¼ÏÂµÄÎÄ¼þ¸öÊýºÍ×Ü´óÐ¡
-:: NOTE: ´«Èë²ÎÊýÖÐÈô´øÓÐ¿Õ¸ñ£¬ÔòÒª¼ÓÈëÀ©Õ¹²ÎÊýºÍÈ¥ÒýºÅ
+:: DESC: ç»Ÿè®¡æ¬¡çº§ç›®å½•ä¸‹çš„æ–‡ä»¶ä¸ªæ•°å’Œæ€»å¤§å°
+:: NOTE: ä¼ å…¥å‚æ•°ä¸­è‹¥å¸¦æœ‰ç©ºæ ¼ï¼Œåˆ™è¦åŠ å…¥æ‰©å±•å‚æ•°å’ŒåŽ»å¼•å·
 
 @ECHO OFF
 
@@ -9,7 +9,7 @@
 :: ECHO "dirfile" path not exist & GOTO END
 :: )
 
-SET dirfile="F:\movie\¹ÛÓ°Ö¸ÄÏ.Viewing_Guide\AV_Guide\playbillº£±¨(AV)\ÈÕ±¾"
+SET dirfile="F:\movie\è§‚å½±æŒ‡å—.Viewing_Guide\AV_Guide\playbillæµ·æŠ¥(AV)\æ—¥æœ¬"
 IF NOT [%1]==[] (
 	SET dirfile=%1
 )
@@ -20,8 +20,8 @@ DIR /ad /b %1 > 1.txt
 
 SETlocal enabledelayedexpansion
 SET fa=
-:: FOR²ÎÊýÀ©Õ¹£ºusebackq£¬tokens=*£¬delims=´øtokens²ÎÊýµÄ FOR, %%iÒýÓÃµÚ¶þ¸ö·ûºÅ£¬%%jÒýÓÃµÚÈý¸ö·ûºÅ£¬%%kÒýÓÃµÚÈý¸ö·ûºÅºóµÄËùÓÐÊ£Óà·ûºÅ¡£
-:: È«Â·¾¶ÒªÈ¥ÒýºÅ
+:: FORå‚æ•°æ‰©å±•ï¼šusebackqï¼Œtokens=*ï¼Œdelims=å¸¦tokenså‚æ•°çš„ FOR, %%iå¼•ç”¨ç¬¬äºŒä¸ªç¬¦å·ï¼Œ%%jå¼•ç”¨ç¬¬ä¸‰ä¸ªç¬¦å·ï¼Œ%%kå¼•ç”¨ç¬¬ä¸‰ä¸ªç¬¦å·åŽçš„æ‰€æœ‰å‰©ä½™ç¬¦å·ã€‚
+:: å…¨è·¯å¾„è¦åŽ»å¼•å·
 	ECHO [2]START...
 FOR /f "usebackq tokens=*" %%i IN (d:\project\1.txt) DO (
 	REM ECHO [2-]DEBUG...
@@ -29,9 +29,9 @@ FOR /f "usebackq tokens=*" %%i IN (d:\project\1.txt) DO (
 	REM ECHO [2-1]"!fa!"
 	REM ECHO [2-2]"%~1\%%i"
 	REM NOTE-BOTH OK~ "!dirfile!\%%i", "!fa!", "%~1\%%i"
-	DIR /s  "!dirfile!\%%i" |findstr ¸öÎÄ¼þ > 2.txt || ECHO. > 2.txt
-	REM FOR /f "eol=0 tokens=1,3 " %%j in (2.txt) DO SET ll=%%k ×Ö½Ú %dirfile%\%%i  %%j ¸öÎÄ¼þ 
-	FOR /f "eol=0 tokens=1,3 " %%j in (2.txt) DO SET ll=%%k & SET ll=!ll:~0,-9! MB %%i  %%j ¸öÎÄ¼þ 
+	DIR /s  "!dirfile!\%%i" |findstr ä¸ªæ–‡ä»¶ > 2.txt || ECHO. > 2.txt
+	REM FOR /f "eol=0 tokens=1,3 " %%j in (2.txt) DO SET ll=%%k å­—èŠ‚ %dirfile%\%%i  %%j ä¸ªæ–‡ä»¶ 
+	FOR /f "eol=0 tokens=1,3 " %%j in (2.txt) DO SET ll=%%k & SET ll=!ll:~0,-9! MB %%i  %%j ä¸ªæ–‡ä»¶ 
 	ECHO  !ll!  
 )
 ECHO [3]END

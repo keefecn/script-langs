@@ -7,7 +7,7 @@ PY_FLAG="-A -S --ignore=test"
 #PY_FLAG="-k --ignore=test"
 DOT="$(which dot)"
 
-# -A°üÀ¨¸¸Àà£¬-S°üÀ¨¹ØÁª£¬-pÉú³ÉµÄÎÄ¼şÃû£¬×îºóÉú³Éclasses_$file.dot
+# -AåŒ…æ‹¬çˆ¶ç±»ï¼Œ-SåŒ…æ‹¬å…³è”ï¼Œ-pç”Ÿæˆçš„æ–‡ä»¶åï¼Œæœ€åç”Ÿæˆclasses_$file.dot
 # fienaem.ext: ${file%.*} ${file##*.}
 $PYREVERSE $PY_FLAG -p ${filename%.*} $file
 

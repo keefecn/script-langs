@@ -48,7 +48,7 @@ function my_image_resize_ratio($src_file, $dst_file, $dst_width, $type) {
         exit();
     }
 
-    // get image ratio, °´±ÈÀıÑ¹Ëõ
+    // get image ratio, æŒ‰æ¯”ä¾‹å‹ç¼©
     $src_w=imagesx($src_img);
     $src_h=imagesy($src_img);
     $ratio_w=1.0 * $dst_width/$src_w;

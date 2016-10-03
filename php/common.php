@@ -102,7 +102,7 @@ function get_request_from_cache( $type )
     // give a default keyword or get from stdin
     if ( $type < 9 ) {
         $keyword = 'beijing';
-#$keyword = '¨?¨???';
+#$keyword = '篓?篓???';
     }
     else {
         printf( "Please insert keyword(xxxxxx) : " );

@@ -1,11 +1,11 @@
 :: 
-:: DESC: ²âÊÔÎÄ¼şÊÇ·ñ´æÔÚ
+:: DESC: æµ‹è¯•æ–‡ä»¶æ˜¯å¦å­˜åœ¨
 
 @ECHO OFF
-:: ±äÁ¿À©Õ¹
+:: å˜é‡æ‰©å±•
 SETlocal enabledelayedexpansion
 
-SET dirname="F:\movie\¹ÛÓ°Ö¸ÄÏ.Viewing_Guide\AV_Guide\playbillº£±¨(AV)\ÈÕ±¾\CA - (Ô­±±¶¼.Hokuto)\MOODYZ£¨2000~£©\(MIDD£üMIDE) MOODYZ DIVA\(MIDE)"
+SET dirname="F:\movie\è§‚å½±æŒ‡å—.Viewing_Guide\AV_Guide\playbillæµ·æŠ¥(AV)\æ—¥æœ¬\CA - (åŸåŒ—éƒ½.Hokuto)\MOODYZï¼ˆ2000~ï¼‰\(MIDDï½œMIDE) MOODYZ DIVA\(MIDE)"
 set i=1
 set j=280
 set prefix=MIDE-

@@ -44,9 +44,9 @@ function get_request( $keyword )
 //		$keyword = trim(fgets(STDIN) );
 //	}else{
 //		if ( rand() % 2 == 0)
-//			$keyword = "ÖÜ½ÜÂ×" ;
+//			$keyword = "å‘¨æ°ä¼¦" ;
 //		else
-//			$keyword = "Ğ¦»°" ;
+//			$keyword = "ç¬‘è¯" ;
 //		printf( "get keyword : %s\n", $keyword );
 //	}
 

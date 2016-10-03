@@ -4,45 +4,45 @@
 
 
 :TEST1
-REM TEST »·¾³±äÁ¿µÄÔöÇ¿ÒýÓÃ~×Ö·û´®Ìæ»»
+REM TEST çŽ¯å¢ƒå˜é‡çš„å¢žå¼ºå¼•ç”¨~å­—ç¬¦ä¸²æ›¿æ¢
 SET a=hello world! 
-ECHO Ìæ»»Ç°µÄÖµ: %a% 
-ECHO Ìæ»»ºóµÄÖµ£º%a: =% 
-ECHO Ìæ»»ºóµÄÖµ£º%a:llo= is her % 
-ECHO Ìæ»»ºóµÄÖµ£º%a: =_% 
-ECHO Ìæ»»ºóµÄÖµ£º%a:*lo=the% 
-ECHO Ìæ»»ºóµÄÖµ£º%a:2,1% 
-ECHO Ìæ»»ºóµÄÖµ£º%a:-2,1% 
+ECHO æ›¿æ¢å‰çš„å€¼: %a% 
+ECHO æ›¿æ¢åŽçš„å€¼ï¼š%a: =% 
+ECHO æ›¿æ¢åŽçš„å€¼ï¼š%a:llo= is her % 
+ECHO æ›¿æ¢åŽçš„å€¼ï¼š%a: =_% 
+ECHO æ›¿æ¢åŽçš„å€¼ï¼š%a:*lo=the% 
+ECHO æ›¿æ¢åŽçš„å€¼ï¼š%a:2,1% 
+ECHO æ›¿æ¢åŽçš„å€¼ï¼š%a:-2,1% 
 
 :: GOTO END
 
  
 :TEST2
-REM TEST ²ÎÊý±äÁ¿µÄÔöÇ¿ÒýÓÃ, ¶ÌÃû%sÎÞÐ§
+REM TEST å‚æ•°å˜é‡çš„å¢žå¼ºå¼•ç”¨, çŸ­å%sæ— æ•ˆ
 REM test.cmd "C:\Program Files (x86)\Git\bin\sort.exe"   
-ECHO ÕýÔÚÔËÐÐµÄÕâ¸öÅú´¦Àí£º
-ECHO Ô­Ãû³Æ£º%1
-ECHO ÍêÈ«Â·¾¶£º%~f1
-ECHO È¥µôÒýºÅ£º%~1
-ECHO ËùÔÚ·ÖÇø£º%~d1
-ECHO Ëù´¦Â·¾¶£º%~p1
-ECHO ÎÄ¼þÃû£º%~n1
-ECHO À©Õ¹Ãû£º%~x1
-ECHO ÎÄ¼þÊôÐÔ£º%~a1
-ECHO ÐÞ¸ÄÊ±¼ä£º%~t1
-ECHO ÎÄ¼þ´óÐ¡£º%~z1
-ECHO ¶ÌÃû£º%~s1
-ECHO ÍêÈ«Â·¾¶Óë¶ÌÃû£º%~fs1
-ECHO Êä³öÀàËÆDIR£º%~ftza1
+ECHO æ­£åœ¨è¿è¡Œçš„è¿™ä¸ªæ‰¹å¤„ç†ï¼š
+ECHO åŽŸåç§°ï¼š%1
+ECHO å®Œå…¨è·¯å¾„ï¼š%~f1
+ECHO åŽ»æŽ‰å¼•å·ï¼š%~1
+ECHO æ‰€åœ¨åˆ†åŒºï¼š%~d1
+ECHO æ‰€å¤„è·¯å¾„ï¼š%~p1
+ECHO æ–‡ä»¶åï¼š%~n1
+ECHO æ‰©å±•åï¼š%~x1
+ECHO æ–‡ä»¶å±žæ€§ï¼š%~a1
+ECHO ä¿®æ”¹æ—¶é—´ï¼š%~t1
+ECHO æ–‡ä»¶å¤§å°ï¼š%~z1
+ECHO çŸ­åï¼š%~s1
+ECHO å®Œå…¨è·¯å¾„ä¸ŽçŸ­åï¼š%~fs1
+ECHO è¾“å‡ºç±»ä¼¼DIRï¼š%~ftza1
 
 GOTO END
 
 :TEST3
 SETlocal enabledelayedexpansion
-REM SET TMP=" ÕýÔÚÔËÐÐµÄÕâ¸öÅú´¦Àí"
+REM SET TMP=" æ­£åœ¨è¿è¡Œçš„è¿™ä¸ªæ‰¹å¤„ç†"
 :: SET TMP=%1
-SET dirfile="F:\movie\¹ÛÓ°Ö¸ÄÏ.Viewing_Guide\AV_Guide\playbillº£±¨(AV)\ÈÕ±¾"
-:: SET dirfile="F:\movie\¹ÛÓ°Ö¸ÄÏ.Viewing_Guide\AV_Guie"
+SET dirfile="F:\movie\è§‚å½±æŒ‡å—.Viewing_Guide\AV_Guide\playbillæµ·æŠ¥(AV)\æ—¥æœ¬"
+:: SET dirfile="F:\movie\è§‚å½±æŒ‡å—.Viewing_Guide\AV_Guie"
 	 SET fa=%dirfile%\%TMP%
 	 SET fb=!fa:"=!
 	 ECHO [2-1]%dirfile%\%TMP%

@@ -6,7 +6,7 @@
 
 # cpu.sh
 # tools: sar-System Activity Reporter, mpstat	
-# imp: /proc/stat    = 100   *£¨user   +   nice   +   system£©/£¨user   +   nice   +   system   +   idle£©    
+# imp: /proc/stat    = 100   *ï¼ˆuser   +   nice   +   systemï¼‰/ï¼ˆuser   +   nice   +   system   +   idleï¼‰    
 idle=`/usr/bin/mpstat 1 1 | /bin/grep Average | awk '{print $9}'`
 used=`echo "100 - $idle" | /usr/bin/bc -l -s` 
 echo $used 

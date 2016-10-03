@@ -6,11 +6,11 @@
 # Copyright (C) 2006 Denny
 # ----------------------------------------------------------------------
 
-#1 ÈçºÎÅúÁ¿É±µô½ø³Ì
+#1 å¦‚ä½•æ‰¹é‡æ€æ‰è¿›ç¨‹
 ps -ef |grep java |grep -v grep |awk '{print $2}' |xargs kill -9 
 
 
-#2 ÅúÁ¿Æô¶¯½ø³Ì
+#2 æ‰¹é‡å¯åŠ¨è¿›ç¨‹
 if [ $# -lt "4" ]
 then
   echo usage: process port username_start username_stop

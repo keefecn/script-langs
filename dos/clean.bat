@@ -1,11 +1,11 @@
 @echo off
 
-:: ×¢ÊÍ,Ê¹ÓÃ::»òrem
-echo Çå¿ÕIEÁÙÊ±ÎÄ¼şÄ¿Â¼...
+:: æ³¨é‡Š,ä½¿ç”¨::æˆ–rem
+echo æ¸…ç©ºIEä¸´æ—¶æ–‡ä»¶ç›®å½•...
 del /f /s /q "%userprofile%\Local Settings\Temporary Internet Files\*.*"
 del /f /s /q "%userprofile%\Local Settings\Temp\*.*"
 
-echo ÕıÔÚÇå³ıÏµÍ³ÁÙÊ±ÎÄ¼ş *.tmp *._tmp *.log *.chk *.old £¬ÇëÉÔµÈ...
+echo æ­£åœ¨æ¸…é™¤ç³»ç»Ÿä¸´æ—¶æ–‡ä»¶ *.tmp *._tmp *.log *.chk *.old ï¼Œè¯·ç¨ç­‰...
 del /f /s /q %systemdrive%\*.tmp
 del /f /s /q %systemdrive%\*._mp
 del /f /s /q %systemdrive%\*.log
@@ -13,24 +13,24 @@ del /f /s /q %systemdrive%\*.gid
 del /f /s /q %systemdrive%\*.chk
 del /f /s /q %systemdrive%\*.old
 
-echo Çå¿ÕÀ¬»øÏä£¬±¸·İÎÄ¼şºÍÔ¤»º´æ½Å±¾...
+echo æ¸…ç©ºåƒåœ¾ç®±ï¼Œå¤‡ä»½æ–‡ä»¶å’Œé¢„ç¼“å­˜è„šæœ¬...
 del /f /s /q %systemdrive%\recycled\*.*
 del /f /s /q %windir%\*.bak
 del /f /s /q %windir%\prefetch\*.*
 rd /s /q %windir%\temp & md %windir%\temp
 
-rem cookeºÍ×î½üÀúÊ·»¹ÊÇ±£Áô°É...
+rem cookeå’Œæœ€è¿‘å†å²è¿˜æ˜¯ä¿ç•™å§...
 rem del /f /q %userprofile%\COOKIES s\*.*
 rem del /f /q %userprofile%\recent\*.*
 
 
 
-echo ÇåÀíÏµÍ³ÅÌÎŞÓÃÎÄ¼ş...
+echo æ¸…ç†ç³»ç»Ÿç›˜æ— ç”¨æ–‡ä»¶...
 %windir%\system32\sfc.exe /purgecache
 
-echo ÓÅ»¯Ô¤¶ÁĞÅÏ¢...
+echo ä¼˜åŒ–é¢„è¯»ä¿¡æ¯...
 %windir%\system32\defrag.exe %systemdrive% -b
 
-echo Çå³ıÏµÍ³Íê³É£¡
+echo æ¸…é™¤ç³»ç»Ÿå®Œæˆï¼
 
 echo. & pause
