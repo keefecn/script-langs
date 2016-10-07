@@ -1,0 +1,25 @@
+project( GFLAGS )
+cmake_minimum_required( VERSION 2.6 )
+
+# set compile argument
+set( CMAKE_CXX_FLAGS "-O2 -Wall " )
+add_definitions(-g)
+
+# set directory
+set( LOCATION_DIR ../.. )
+IF ( CMAKE_SIZEOF_VOID_P  EQUAL 8 )
+        set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LOCATION_DIR}/lib64 )
+ELSE()
+        set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LOCATION_DIR}/lib )
+ENDIF()
+
+set( CMAKE_INSTALL_PREFIX ${LOCATION_DIR} )
+
+# set liberary link argument
+set( LIB_NAME gflags)
+aux_source_directory( . GFLAGS_DIR )
+add_library( ${LIB_NAME} SHARED ${GFLAGS_DIR} )
+set_target_properties( ${LIB_NAME} PROPERTIES VERSION 1.0 SOVERSION 1 )
+
+INSTALL ( FILES gflags.h gflags_completions.h config.h mutex.h
+    DESTINATION include/gflags )

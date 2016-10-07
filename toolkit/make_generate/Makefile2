@@ -1,0 +1,22 @@
+# makefile
+CC=g++
+LD=g++
+INCLUDES=
+LIBS=
+
+CFLAGS=-Wall -g
+#LDFLAGS=-lpthread 
+CFLAGS:=$(CFLAGS) $(INCLUDES)
+LDFLAGS:=$(LDFLAGS) $(LIBS)
+
+OBJFILES =  backupData.o
+TARGET = backupData
+%.o : %.cpp
+	$(CC) $(CFLAGS)  -c $< 
+
+all : $(TARGET)
+$(TARGET): $(OBJFILES)
+	$(LD) $(LDFLAGS) -o $@ $(OBJFILES)  
+
+clean:
+	-rm $(OBJFILES)  $(TARGET)

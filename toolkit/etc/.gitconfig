@@ -1,0 +1,19 @@
+[user]
+    name = Denny Wu
+    email = wuqifu@gmail.com
+[denny]
+    wu = denny@lenovo.desktop
+[core]
+    quotepath = false
+	excludesfile = ~/.gitignore_global
+[gui]
+    encoding = utf-8
+[i18n]
+    commitEncoding = utf-8
+[svn]
+    pathnameencoding = utf-8
+[credential]
+    #helper = cache --timeout 3600
+    #helper = store
+[push]
+	default = simple

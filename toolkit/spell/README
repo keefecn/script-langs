@@ -1,0 +1,44 @@
+2011-8-3
+How to Write a Spelling Corrector
+怎样写一个拼写检查器 
+原理：统计语言模型
+
+origin page: http://norvig.com/spell-correct.html
+Other Natural Languages
+This essay has been translated into: 
+    Simplified Chinese by Eric You XU http://blog.youxu.info/spell-correct.html
+    Japanese by Yasushi Aoki    http://www.aoky.net/articles/peter_norvig/spell-correct.htm
+    Russian by Petrov Alexander 
+
+Other Computer Languages
+Language	Lines Code_Author
+(and link to implementation)
+Awk	15	Tiago "PacMan" Peczenyj
+Awk	28	Gregory Grefenstette
+C	184	Marcelo Toledo
+C++	98	Felipe Farinon
+C#	43	Lorenzo Stoakes
+C#	69	Frederic Torres
+Clojure	18	Rich Hickey
+D	23	Leonardo M
+Erlang	87	Federico Feroldi
+F#	16	Dejan Jelovic
+F#	34	Sebastian G
+Groovy	22	Rael Cunha
+Haskell	24	Grzegorz
+Java	35	Rael Cunha
+Java	372	Dominik Schulz
+Javascript	53	Panagiotis Astithas
+Lisp	26	Mikael Jansson
+Perl	63	riffraff
+PHP	68	Felipe Ribeiro
+PHP	103	Joe Sanders
+Python	21	Peter Norvig
+Rebol	133	Cyphre
+Ruby	34	Brian Adkins
+Scala	23	Thomas Jung
+Scheme	45	Shiro
+Scheme	89	Jens Axel
+
+big.txt, 这个里面大约有几百万个词(相当于是语料库了). 这个文件是由Gutenberg 计划 中可以获取的一些书, Wiktionary 和 British National Corpus 语料库构成. 
+(当时在飞机上我只有福尔摩斯全集, 我后来又加入了一些, 直到效果不再显著提高为止).

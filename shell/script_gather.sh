@@ -85,7 +85,6 @@ do
   ((port++))
 done
 
-# http://blog.csdn.net/wqf363/archive/2006/11/12/1380142.aspx
 #3 截取完整路径中的文件名, 如下列str中的filename
 str='/a/b/c/d/e/f/filename'
 echo ${str##*/}

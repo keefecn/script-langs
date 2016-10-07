@@ -1,0 +1,51 @@
+# add by denny, 2016/9/17
+# common: astyle
+*.orig
+*.tmp
+log/
+*~
+
+# word
+~$*
+
+# cmake
+CMakeCache.txt
+CMakeFiles
+*Makefile
+*cmake_install.cmake
+*install_manifest.txt
+*.pro
+lib/
+lib64/
+
+# python
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# c/c++ extensions
+*cmake_install.cmake
+*install_manifest.txt
+*.pro
+*.so
+*.[oa]
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/

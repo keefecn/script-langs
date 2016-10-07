@@ -10,16 +10,30 @@ else
  dir=$1
 fi 
 
-# cmake 
+name='-name "*~" or -name "*.tmp"'
+
+do_rm()
+{       # shell call paras only from commandline
+        # logic expr: -o/-a  eg., -name "" -o -name ""
+        find $dir -name "*~" -o -name "*.tmp" |xargs rm
+        #find $dir $name -exec rm -rf {} \;
+}
+do_rm
+#exit 0
+
+# general
+find $dir -name "*~" -exec rm -rf {} \;
+
+# cmake
 find $dir -name "CMakeFiles" -exec rm -rf {} \;
 find $dir -name "CMakeCache.txt" -exec rm -rf {} \;
 find $dir -name "CPa*.cmake" -exec rm -rf {} \;
 find $dir -name "cmake_install.cmake" -exec rm -rf {} \;
 find $dir -name "install_manifest.txt" -exec rm -rf {} \;
-find $dir -name "Makefile" -exec rm -rf {} \;
+#find $dir -name "Makefile" -exec rm -rf {} \;
 
 # lib
-find $dir -name "lib*.*" -exec rm -rf {} \;
+#find $dir -name "lib*.*" -exec rm -rf {} \;
 #find $dir -name ".svn" -exec rm -rf {} \;
 
 # c/c++
