@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-include_once("common.php");
+include_once("parse_socket.php");
 
 //print_r($_GET);   //get from commandline, no need
 //print_r($_SERVER["argv"]);   //get array

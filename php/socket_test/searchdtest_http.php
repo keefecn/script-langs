@@ -38,7 +38,7 @@ function get_socket( $host, $port )
 }
 
 function get_request( $keyword )
-{
+{   // get keywords from paras/input
 //	if( $type != 1 ){
 //		printf( "Please insert keyword : " );
 //		$keyword = trim(fgets(STDIN) );
@@ -68,26 +68,11 @@ function parse_result( $buf )
     printf("subtype = %08x\n",  $res1[2]);
 }
 
-//if($argc == 4)
-//{
-//  $host = $argv[1];
-//  $port = $argv[2];
-//  $type = $argv[3];
-//}
-//else if ($argc == 2 )
-//{
+
 $host = "127.0.0.1";
 $port = 9280;
-//  $type = $argv[1];
-//}
-//else
-//{
-//	printf( "Test\n");
-//	printf( "Test:  Usage:   %s host port  type\n", $argv[0] );
-//	printf( "\t0\n\t\t: ReplyTask\n" );
-//	die();
-//}
-$key = $_GET['key'];
+// GET METHOD
+$key = $_GET['key'];  
 echo $key;
 
 $time_start = microtime_float(true);
@@ -134,9 +119,5 @@ if ( $FSFlag == 1) {
 ////$current_date = date("Ymd|H:i:s");
 ////$text=$current_date.' waste time: '.$time.' seconds'."\r\n";
 ////echo $text;
-////
-////$fp1 = fopen("debug.txt","a+");
-////fwrite($fp1, $text);
-////fclose($fp1);
 
 ?>
