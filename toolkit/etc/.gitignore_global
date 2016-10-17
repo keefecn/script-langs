@@ -4,6 +4,7 @@
 *.tmp
 log/
 *~
+tags
 
 # word
 ~$*

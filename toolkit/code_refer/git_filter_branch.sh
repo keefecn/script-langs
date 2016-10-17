@@ -40,13 +40,15 @@ git filter-branch -f --env-filter '
 	export GIT_COMMITTER_EMAIL="wuqifu@gmail.com"
 	;;
 	esac
-	' 
+	'
 }
 
 # remove unnecessay file or directory
 do_tree_filter()
 {
 git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
+git push origin --tags --force
+git push origin --all --force
 }
 
 do_env_filter
