@@ -5,7 +5,7 @@
 #date: 2011-01-22
 
 SUBDIRS=`ls -d */ | grep -v 'bin'`
-#SUBDIRS=gflags icethread 
+#SUBDIRS='gflags icethread'
 
 do_pull()
 {
@@ -13,8 +13,8 @@ do_pull()
  do
   echo ''
   echo '--'$subdir
-  #( cd $subdir; git pull ) 
-  ( cd $subdir; git status && git pull ) 
+  #( cd $subdir; git pull )
+  ( cd $subdir; git status && git pull )
  done
   echo ''
 }
