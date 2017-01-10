@@ -1,11 +1,11 @@
 [user]
-    name = Denny Wu
+    name = Keefe Wu
     email = wuqifu@gmail.com
 [denny]
     wu = denny@lenovo.desktop
 [core]
     quotepath = false
-	excludesfile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [gui]
     encoding = utf-8
 [i18n]
@@ -16,4 +16,4 @@
     #helper = cache --timeout 3600
     #helper = store
 [push]
-	default = simple
+    default = simple
