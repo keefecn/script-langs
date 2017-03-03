@@ -4,25 +4,27 @@
 #author: denny, wuqifu@gmail.com
 #date: 2011-01-22
 
-SUBDIRS=`ls -d */ | grep -v 'keefes'`
-DIS_SUBDIRS='keefes bin'
+SUBDIRS=`ls -d */ | grep -v 'bin'`
+#SUBDIRS='topicspider topicspider-design www'
 
 do_pull()
 {
-  for subdir in $SUBDIRS
-  do
-    case subdir in
-      $DIS_SUBDIRS)
-  	continue
-	;;
-    esac
-
+    for subdir in $SUBDIRS
+    do
+        echo ''
+        echo '--'$subdir
+        #( cd $subdir; git status && git pull )
+        cd $subdir;
+        ret1=`git status`;
+        ret11=`echo $ret1 | grep -E "ahead of|not staged"`;
+        if [ -n "$ret11" ] ; then
+            #echo $ret1;
+            git status;
+        fi
+        git pull;
+        cd ..
+    done
     echo ''
-    echo '--'$subdir
-    #( cd $subdir; git add *.md && git commit -m 'update readme' -a  && git push && git status)
-    ( cd $subdir; git status && git pull )
-  done
-  echo ''
 }
 
 do_pull
