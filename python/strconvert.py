@@ -1,9 +1,11 @@
 # coding:utf8
 '''
-Created on 2014年8月21日
-
-@author:lenovo
+@filename regex.py
+@author: keefe
+@created: 2014/8/21
+@see: 
 '''
+
 # print(end=';'), python3 support when ; don't newline
 from __future__ import print_function
 import binascii

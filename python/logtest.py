@@ -3,9 +3,10 @@
 '''
 @version: 0.1
 @date: 2011-7-19
-@author: denny
+@author: keefe
 @see: http://www.red-dove.com/python_logging.html
 '''
+
 import logging
 import logging.config
 
@@ -35,6 +36,7 @@ logging.basicConfig(
     format = '%(asctime)s %(levelname)s %(module)s.%(funcName)s Line:%(lineno)d %(message)s',
     filename = 'filelog.log',
 )
+
 ## usage:
 import setting
 logging.debug('This is a debug message')

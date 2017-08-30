@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# coding:utf8
 # Filename: monitor.py
 # Author: zhangshuo@staff.sina.com.cn
 # Version: 2.2 2009-3-3

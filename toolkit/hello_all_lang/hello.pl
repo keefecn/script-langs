@@ -2,5 +2,5 @@
 use strict;
 use warnings;
 
-print "Hello, World...\n";
-
+# stdout
+print "[perl] Hello, World\n";

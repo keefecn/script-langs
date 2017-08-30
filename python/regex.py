@@ -1,11 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 '''
-@author: rex
-@blog: http://iregex.org
-@filename py_utf8_unicode.py
-@created: 2010-06-27 09:11
+@author: keefe
+@filename regex.py
+@created: 2010-06-27
 @see: 详细出处参考：http://www.jb51.net/article/24386.htm
+  http://iregex.org
+'''
+'''
+@filename regex.py
+@author: keefe
+@created: 2017/8/30
+@see: 
 '''
 
 import re

@@ -1,5 +1,11 @@
 #!/usr/bin/python
-#run: python debug_demo.py
+# coding:utf8
+'''
+@filename debug_demo.py
+@author: keefe
+@created: 2017/8/30
+@see: 
+'''
 
 _DEBUG=True
 def debug_demo(val):
