@@ -6,3 +6,7 @@ log
 
 # c/c++
 *.o
+
+# java
+*.class
+
