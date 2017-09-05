@@ -22,6 +22,7 @@ from google.appengine.ext import db
 from google.appengine.api import users
 from google.appengine.ext import webapp
 
+
 class Greeting(db.Model):
     author = db.UserProperty()
     content = db.StringProperty(multiline=True)
@@ -29,6 +30,7 @@ class Greeting(db.Model):
 
 
 class MainPage(webapp.RequestHandler):
+
     def get(self):
         self.response.out.write('<html><body>')
         self.response.out.write('<b>Hello,denny, 2010-4-24!<br>')
@@ -39,7 +41,8 @@ class MainPage(webapp.RequestHandler):
 
         for greeting in greetings:
             if greeting.author:
-                self.response.out.write('<b>%s</b> wrote:' % greeting.author.nickname())
+                self.response.out.write('<b>%s</b> wrote:' %
+                                        greeting.author.nickname())
             else:
                 self.response.out.write('An anonymous person wrote:')
             self.response.out.write('<blockquote>%s</blockquote>' %
@@ -55,6 +58,7 @@ class MainPage(webapp.RequestHandler):
 
 
 class Guestbook(webapp.RequestHandler):
+
     def post(self):
         greeting = Greeting()
 
@@ -67,19 +71,17 @@ class Guestbook(webapp.RequestHandler):
 
 
 application = webapp.WSGIApplication([
-  ('/', MainPage),
-  ('/sign', Guestbook)
+    ('/', MainPage),
+    ('/sign', Guestbook)
 ], debug=True)
 
 
 def main():
-    #print 'content-type:text/plain'
-    #print 'Hello,denny, 2010-4-24!'
+    # print 'content-type:text/plain'
+    # print 'Hello,denny, 2010-4-24!'
 
     wsgiref.handlers.CGIHandler().run(application)
 
 
 if __name__ == '__main__':
     main()
-
-

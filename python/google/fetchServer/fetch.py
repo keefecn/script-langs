@@ -25,7 +25,12 @@
 #                                                                           #
 #############################################################################
 
-import wsgiref.handlers, urlparse, StringIO, logging, base64, zlib
+import wsgiref.handlers
+import urlparse
+import StringIO
+import logging
+import base64
+import zlib
 from google.appengine.ext import webapp
 from google.appengine.api import urlfetch
 from google.appengine.api import urlfetch_errors
@@ -35,13 +40,13 @@ from google.appengine.api import urlfetch_errors
 class MainHandler(webapp.RequestHandler):
     Software = 'GAppProxy/0.0.1'
     # hop to hop header should not be forwarded
-    HtohHdrs= ['connection', 'keep-alive', 'proxy-authenticate',
-               'proxy-authorization', 'te', 'trailers',
-               'transfer-encoding', 'upgrade']
+    HtohHdrs = ['connection', 'keep-alive', 'proxy-authenticate',
+                'proxy-authorization', 'te', 'trailers',
+                'transfer-encoding', 'upgrade']
 
     def myError(self, status):
-        self.response.out.write('HTTP/1.1 %d %s\r\n' % (status, \
-                                self.response.http_status_message(status)))
+        self.response.out.write('HTTP/1.1 %d %s\r\n' % (status,
+                                                        self.response.http_status_message(status)))
         self.response.out.write('Server: %s\r\n' % self.Software)
         self.response.out.write('\r\n')
 
@@ -73,7 +78,8 @@ class MainHandler(webapp.RequestHandler):
                 self.myError(403)
                 return
             # create new path
-            newPath = urlparse.urlunparse((scm, netloc, path, params, query, ''))
+            newPath = urlparse.urlunparse(
+                (scm, netloc, path, params, query, ''))
 
             # make new headers
             newHeaders = {}
@@ -115,7 +121,8 @@ class MainHandler(webapp.RequestHandler):
         # fetch, try 3 times
         for _ in range(3):
             try:
-                resp = urlfetch.fetch(newPath, origPostData, method, newHeaders, False, False)
+                resp = urlfetch.fetch(
+                    newPath, origPostData, method, newHeaders, False, False)
                 break
             except urlfetch_errors.ResponseTooLargeError:
                 self.myError(413)
@@ -129,8 +136,8 @@ class MainHandler(webapp.RequestHandler):
         # forward
         self.response.headers['Content-Type'] = 'application/octet-stream'
         # status line
-        self.response.out.write('HTTP/1.1 %d %s\r\n' % (resp.status_code, \
-                                self.response.http_status_message(resp.status_code)))
+        self.response.out.write('HTTP/1.1 %d %s\r\n' % (resp.status_code,
+                                                        self.response.http_status_message(resp.status_code)))
         # headers
         # default Content-Type is text
         textContent = True
@@ -138,8 +145,8 @@ class MainHandler(webapp.RequestHandler):
             if header.strip().lower() in self.HtohHdrs:
                 # don't forward
                 continue
-            ## there may have some problems on multi-cookie process in urlfetch.
-            #if header.lower() == 'set-cookie':
+            # there may have some problems on multi-cookie process in urlfetch.
+            # if header.lower() == 'set-cookie':
             #    logging.info('O %s: %s' % (header, resp.headers[header]))
             #    scs = resp.headers[header].split(',')
             #    for sc in scs:
@@ -147,7 +154,8 @@ class MainHandler(webapp.RequestHandler):
             #        self.response.out.write('%s: %s\r\n' % (header, sc.strip()))
             #    continue
             # other
-            self.response.out.write('%s: %s\r\n' % (header, resp.headers[header]))
+            self.response.out.write('%s: %s\r\n' %
+                                    (header, resp.headers[header]))
             # check Content-Type
             if header.lower() == 'content-type':
                 if resp.headers[header].lower().find('text') == -1:
@@ -171,8 +179,8 @@ class MainHandler(webapp.RequestHandler):
 
     def get(self):
         self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
-        self.response.out.write( \
-'''
+        self.response.out.write(
+            '''
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

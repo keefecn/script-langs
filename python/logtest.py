@@ -10,13 +10,13 @@
 import logging
 import logging.config
 
-## method 1
+# method 1
 # load configure
 logging.config.fileConfig("logging.conf")
-#create logger
+# create logger
 logger = logging.getLogger("root")
 
-url="http://www.cmuf.com/"
+url = "http://www.cmuf.com/"
 #"application" code
 logger.debug(len(url))
 logger.info("info message: %d", len(url))
@@ -28,15 +28,15 @@ logger.critical("critical message")
 logHello = logging.getLogger("hello")
 logHello.info("Hello world!")
 
-## mehtod 2
-## setting.py
+# mehtod 2
+# setting.py
 import logging
 logging.basicConfig(
-    level = logging.DEBUG,
-    format = '%(asctime)s %(levelname)s %(module)s.%(funcName)s Line:%(lineno)d %(message)s',
-    filename = 'filelog.log',
+    level=logging.DEBUG,
+    format='%(asctime)s %(levelname)s %(module)s.%(funcName)s Line:%(lineno)d %(message)s',
+    filename='filelog.log',
 )
 
-## usage:
+# usage:
 import setting
 logging.debug('This is a debug message')
