@@ -2,10 +2,14 @@
 # common: astyle
 *.orig
 *.tmp
+*.log
 log/
 tags
 _sites/
 *.prof
+.settings
+.ieda
+
 
 # word
 ~$*

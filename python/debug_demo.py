@@ -14,6 +14,7 @@ def debug_demo(val):
     if _DEBUG == True:
         import pdb
         pdb.set_trace()
+
     if val <= 1600:
         print "level 1"
         print 0
@@ -28,6 +29,5 @@ def debug_demo(val):
         print (val - 6500) * 0.20 + (6500 - 3500) * 0.10 + (3500 - 1600) * 0.05
 
 
-#~def debug_demo
 if __name__ == "__main__":
     debug_demo(4500)
