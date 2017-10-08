@@ -9,6 +9,7 @@ _sites/
 *.prof
 .settings
 .ieda
+*.dot
 
 
 # word
@@ -45,6 +46,7 @@ build/
 develop-eggs/
 dist/
 downloads/
+*egg-info/
 
 # Unit test / coverage reports
 htmlcov/
