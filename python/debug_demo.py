@@ -4,7 +4,7 @@
 @filename debug_demo.py
 @author: keefe
 @created: 2017/8/30
-@see: 
+@see:
 '''
 
 _DEBUG = True

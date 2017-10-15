@@ -39,7 +39,7 @@ rname = {
     '4': 'done',
 }
 
-#field_mask = [waiting, starting, failed, done]
+# field_mask = [waiting, starting, failed, done]
 
 
 #
@@ -319,10 +319,10 @@ class monitor_main:
         for arr in dest_str:
             word = arr.split(",")
 
-            #####################################################
+            #
             # add digital group symbol in the digital number.
             # 1 gourp every 1000 times
-            #####################################################
+            #
 
             # digital group symbol
             if (word[1].isdigit()):
@@ -342,9 +342,9 @@ class monitor_main:
                 # print digital_str_array
                 word[1] = ','.join(digital_str_array)
 
-            #####################################################
+            #
             # add digital group symbol in the digital number end
-            #####################################################
+            #
 
             temp_word1 = word[1]
 
@@ -432,7 +432,7 @@ class monitor_main:
 
     def myhandle(self, a, b):
 
-        #global read_display_switch
+        # global read_display_switch
         global cmd_stat_switch
         cmd_stat_switch = 0
 
@@ -511,9 +511,9 @@ attributes = dict(
         '',
         'reverse',
         'concealed'
-    ],
+        ],
         range(1, 9)
-    )
+        )
 )
 del attributes['']
 
@@ -528,9 +528,9 @@ highlights = dict(
         'on_magenta',
         'on_cyan',
         'on_white'
-    ],
+        ],
         range(40, 48)
-    )
+        )
 )
 
 
@@ -544,9 +544,9 @@ colors = dict(
         'magenta',
         'cyan',
         'white',
-    ],
+        ],
         range(30, 38)
-    )
+        )
 )
 
 
@@ -575,9 +575,9 @@ def colored(text, color=None, on_color=None, attrs=None):
     return text
 
 
-###########################################################
+#
 # transform xxx||xxx||vvv|vvv| to fraction form
-###########################################################
+#
 
 
 def str2ptg(str):
@@ -616,7 +616,7 @@ def str2ptg(str):
 
     gs = dict(gs)
 
-    #grs.sort(key = lambda x: ','.join([x[1],x[0]]))
+    # grs.sort(key = lambda x: ','.join([x[1],x[0]]))
     grs.sort(lambda x, y: cmp(','.join([x[1], x[0]]), ','.join([y[1], y[0]])))
 
     # print grs
@@ -664,7 +664,7 @@ def str2ptg(str):
         return '|'.join(grs) + '|' + '|'.join(oth)
 
 
-###########################################################
+#
 
 if __name__ == "__main__":
     locale.setlocale(locale.LC_ALL, "")

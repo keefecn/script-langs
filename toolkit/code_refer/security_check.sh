@@ -5,21 +5,52 @@
 # date: 2016/5/8, 2017/10/15
 # note: check database password, langs sensitive functions(string,...)
 #   use check_langs_list.xls to compare
+# tools: 
+#   regex support tools: find grep
 # ----------------------------------------------------------------------
 
-dir=$1
+DIR=$1
+LANG='php'
+LANGS_REGEX='.*\.\(c\|h\|cpp\|py\|php\)' 
+STRA='word1'
+STRB='word2'
+
+find_word()
+{   # read~ get variable from input
+    # use find to get file, then use grep to get wrod line
+    find $DIR -regex $LANGS_REGEX | xargs grep $word
+    #grep -rl $KEY $DIR | xargs grep $KEY
+}
+
+replace_word()
+{
+    sed -i "s/$STRA/$STRB/g" `grep -rl "STRA" $DIR`
+}
 
 # check db passwd
-key="connect"
-key2="root"
-#find $dir -iname "*.php" |xargs grep $key
-#grep -rl $key $dir | xargs grep $key
-grep -rl $key2 $dir | xargs grep $key2
+check_db()
+{
+    DB_KEYS='connect root'
+    for word in $DB_KEYS
+    do
+        #echo $word
+        find_word
+    done
+}
 
 # check c/cpp
-
+check_c()
+{
+}
 
 # check java
-
+check_java()
+{
+}
 
 # check python
+check_python()
+{
+}
+
+check_db

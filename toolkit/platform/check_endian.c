@@ -4,28 +4,37 @@
 // tcp/ip network is big-endian
 int isLitter()
 {
-  int a =1;
-  return *(char*)&a;
+    int a =1;
+    int ret;
+    ret = *(char*)&a;
+    if(ret)
+        printf("litter\n");
+    else printf("big\n");
+    return ret;
+}
+
+void convert_num(int num)
+{
+    printf("htons(%d) = %d\n", num, htons(num));
+    printf("htonl(%d) = %d\n", num, htonl(num));
+    printf("ntohs(%d) = %d\n", num, ntohs(num));
+    printf("ntohl(%d) = %d\n", num, ntohl(num));
 }
 
 int main()
 {
-	if (isLitter()) printf("litter");
-	else printf("big");
-	printf("\n1=%d\n", htonl(1));
-	printf("%d\n", htonl(2));
-	printf("%d\n", htonl(3));
-	printf("%d\n", htonl(4));
-	printf("5=%d\n", htons(5));
-	printf("5=%d\n", htonl(5));
-	printf("5=%d\n", ntohl(5));
-	printf("5=%d\n", ntohs(5));
-	printf("6 = %d\n", ntohl(6));
-	printf("%d\n", ntohl(808464439));
-	printf("%d\n", ntohl(808464439));
-	printf("%d\n", htonl(808464439));
-	int i;
-	for( i=0; i<70; i++)
-		printf("%d ntohl = %d\n", i, ntohl(i));
-	return 0;
+    // check litter-endian
+    isLitter();
+
+    // convert_num
+    convert_num(5);
+    convert_num(83886080);
+
+    int i;
+    for( i=0; i<20; i++)
+        printf("htonl(%d) = %d\n", i, htonl(i));
+
+    for( i=0; i<20; i++)
+        printf("ntohl(%d)  = %d\n", i, ntohl(i));
+    return 0;
 }

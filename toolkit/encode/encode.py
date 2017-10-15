@@ -52,10 +52,10 @@ import re
 url = "http://www.chinanews.com/tw/2011/01-04/2763839.shtml"
 page = urllib2.urlopen(url)
 html = page.read()
-#html = page.read().decode("gbk", 'ignore')
+# html = page.read().decode("gbk", 'ignore')
 charsets = page.headers['Content-Type'].split(' charset=')
 if len(charsets) > 1:
-    #charset = page.headers.getparam('charset')
+    # charset = page.headers.getparam('charset')
     charset = charsets[1].lower()
 else:
     charsets = re.search(

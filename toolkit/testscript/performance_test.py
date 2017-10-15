@@ -2,12 +2,12 @@
 # coding=utf-8
 """
 -------------------------------------------------
-File Name：     performance_test.py  
-Description :  
+File Name：     performance_test.py
+Description :
 Author :       Keefe Wu
 date：         2017/1/17
 refer:  http://python.jobbole.com/86822/
-conclusion: cpu/io/http各种密集型的性能比较（按使用时间升序排）  
+conclusion: cpu/io/http各种密集型的性能比较（按使用时间升序排）
     cpu密集型: line>多进程>多线程；
     io密集型：多进程>line>多线程
     http密集型：多线程>多进程>line，推荐多线程。
@@ -51,7 +51,7 @@ def read():
 
 
 def count():
-    #count_with_args(1, 1)
+    # count_with_args(1, 1)
     c = 0
     while c < 500000:
         c += 1
@@ -83,7 +83,7 @@ def line_test_more():
     t = time.time()
     for x in range(REPEAT_NUM):
         count()
-        #count_with_args(1, 1)
+        # count_with_args(1, 1)
     print("Line cpu", time.time() - t)
 
     # IO密集操作
@@ -125,7 +125,7 @@ def line_test(func):
     t = time.time()
     for x in range(REPEAT_NUM):
         func()
-    #print("line %s: %f" %(func.__name__, time.time() - t))
+    # print("line %s: %f" %(func.__name__, time.time() - t))
     print("line", func.__name__, time.time() - t)
 
 # 多线程并发，参数为函数名

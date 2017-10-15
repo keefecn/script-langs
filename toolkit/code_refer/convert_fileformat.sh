@@ -1,11 +1,13 @@
 #! /bin/bash
 # ----------------------------------------------------------------------
-# file: codeformat.sh
+# file: convert_fileformat.sh
 # author: keefe, wuqifu@gmail.com
 # date: 2016/5/8, 2017/10/15
-# tools: dos2unix unix2dos mv rename
-# note: convert file format
-#   dos format file to unix us: "\r\n"-->"\n"
+# note: convert file format~ dos format file to unix us: "\r\n"-->"\n"
+# tools: dos2unix unix2dos tr vim sed
+#  method 1: dos2unitx
+#  method 2: tr -d '\r'
+#  method 3: vim~  set fileformat=dos/unix
 # ----------------------------------------------------------------------
 
 # method 1: cmd--dos2unix,unix2dos

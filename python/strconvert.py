@@ -3,7 +3,7 @@
 @filename regex.py
 @author: keefe
 @created: 2014/8/21
-@see: 
+@see:
 '''
 
 # print(end=';'), python3 support when ; don't newline
@@ -60,20 +60,22 @@ if __name__ == '__main__':
     example(r"'12abc'.encode('ascii')")
     print('数字或字符数组', end=":")
     example(r"bytes([1,2, ord('1'),ord('2')])")
-    #print('16进制字符串', end=':');example(r"bytes().fromhex('010210')")
-    #print('16进制字符串', end=':');example(r"bytes(map(ord, '\x01\x02\x31\x32'))")
+    # print('16进制字符串', end=':');example(r"bytes().fromhex('010210')")
+    # print('16进制字符串', end=':');example(r"bytes(map(ord, '\x01\x02\x31\x32'))")
     print('16进制数组', end=';')
     example(r'bytes([0x01,0x02,0x31,0x32])')
 
     print('\n-------------------\n')
 
     print('字节串转字符串:')
-    #print('字节码解码为字符串', end=":");example(r"bytes(b'\x31\x32\x61\x62').decode('ascii')")
+    # print('字节码解码为字符串',
+    # end=":");example(r"bytes(b'\x31\x32\x61\x62').decode('ascii')")
     print('字节串转16进制表示,夹带ascii', end=":")
     example(r"str(bytes(b'\x01\x0212'))[2:-1]")
     print('字节串转16进制表示,固定两个字符表示', end=":")
     example(r"str(binascii.b2a_hex(b'\x01\x0212'))[2:-1]")
-    #print('字节串转16进制数组', end=":");example(r"[hex(x) for x in bytes(b'\x01\x0212')]")
+    # print('字节串转16进制数组', end=":");example(r"[hex(x) for x in
+    # bytes(b'\x01\x0212')]")
 
     print('\n===================\n')
     print("以上原理都比较简单，看一下就明白了。这里仅仅是抛砖引玉，有更好更简单的方法，欢迎欢迎")

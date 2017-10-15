@@ -1,16 +1,18 @@
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
 @author: keefe
 @date: 2017/10/2
 @note: check bytes stored sequence
-0x12345678 -- 
+0x12345678 --
 address stored left is high address
 big-endian: low byte stored in high address, Eg, 0x12345678 -> 78 56 34 12
 little-endian: low byte stored in low address, Eg. 0x12345678 --> 12 34 56 79
 network: tcp/ip use big-endian.
 '''
 
-def check_endian ():
+
+def check_endian():
     import struct
     val = 0x12345678
     pk = struct.pack('i', val)

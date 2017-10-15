@@ -2,6 +2,9 @@
 # ----------------------------------------------------------------------
 # This is a free shell script under GNU GPL version 2.0 or above
 # Copyright (C) 2006-2010 Denny
+# tools: 
+#  regex support: find grep
+#  other: sed renmae
 # ----------------------------------------------------------------------
 
 ###1: find file 

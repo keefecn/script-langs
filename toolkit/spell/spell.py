@@ -8,7 +8,8 @@ import re
 import collections
 
 
-def words(text): return re.findall('[a-z]+', text.lower())
+def words(text):
+    return re.findall('[a-z]+', text.lower())
 
 
 def train(features):
@@ -36,7 +37,8 @@ def known_edits2(word):
     return set(e2 for e1 in edits1(word) for e2 in edits1(e1) if e2 in NWORDS)
 
 
-def known(words): return set(w for w in words if w in NWORDS)
+def known(words):
+    return set(w for w in words if w in NWORDS)
 
 
 def correct(word):
@@ -44,7 +46,7 @@ def correct(word):
         edits1(word)) or known_edits2(word) or [word]
     return max(candidates, key=NWORDS.get)
 
-################ Testing code from here on ################
+# Testing code from here on ################
 
 
 def spelltest2():

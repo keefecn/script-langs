@@ -38,6 +38,7 @@ __pycache__/
 *.pro
 *.so
 *.[oa]
+a.out
 
 # Distribution / packaging
 .Python
