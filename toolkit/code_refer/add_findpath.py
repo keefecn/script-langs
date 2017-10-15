@@ -4,7 +4,7 @@
 @version: 1.0
 @author: keefe
 @date: 2017/10/1
-@note: add currnet python module director to find path~ lib/site-packages/ 
+@note: add currnet python module director to find path~ lib/site-packages/
 '''
 import os
 import platform
@@ -12,6 +12,7 @@ import subprocess
 
 PY_CMD = ''
 CAT_CMD = ''
+
 
 def do_cmd(cmd):
     print('cmd: %s' % cmd)
@@ -35,15 +36,15 @@ if 'Windows' in CUR_OS:  # Windows/linux
     PY_DIR = do_cmd(PY_CMD)
     dst_dir = os.path.dirname(PY_DIR)
     dst_dir = dst_dir + os.sep + 'lib' + os.sep + 'site-packages'
-else:   
-    PY_CMD = 'which python' 
+else:
+    PY_CMD = 'which python'
     CAT_CMD = 'cat'
     PY_DIR = do_cmd(PY_CMD)
     if '/usr/bin/python' in PY_DIR:  # linux
         PY_DIR = PY_DIR.strip()
         if os.path.islink(PY_DIR):
             python_v = os.readlink(PY_DIR)
-            dst_dir = '/usr/lib/%s/dist-packages' %python_v
+            dst_dir = '/usr/lib/%s/dist-packages' % python_v
         else:
             dst_dir = PY_LINUXDIR
     else:

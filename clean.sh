@@ -1,14 +1,16 @@
 #!/bin/bash
-#file: 
-#author: denny, wuqifu@gmail.com
-#date: 2016/5/8
+# ----------------------------------------------------------------------
+# file: clean.sh
+# author: keefe, wuqifu@gmail.com
+# date: 2016/5/8, 2017/10/15
+# ----------------------------------------------------------------------
 
 if [ $# -lt "1" ]; then
  echo usage: $0 [dirname]
  dir=.
 else
  dir=$1
-fi 
+fi
 
 name='-name "*~" or -name "*.tmp"'
 

@@ -1,8 +1,10 @@
 #! /bin/bash
-#brief: git pull from remote
-#file: git-pull.sh
-#author: denny, wuqifu@gmail.com
-#date: 2011-01-22
+# ----------------------------------------------------------------------
+# file: git-pull.sh
+# author: keefe, wuqifu@gmail.com
+# date: 2011-01-22, 2017/10/15
+# note: git pull multiple projects from remote
+# ----------------------------------------------------------------------
 
 SUBDIRS=`ls -d */ | grep -v 'bin'`
 #SUBDIRS='topicspider topicspider-design www'
