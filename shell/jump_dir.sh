@@ -10,7 +10,7 @@
 CD_CMD=cd
 
 # E:\dev\python\venv\superset-py27-env\Lib\site-packages
-SUPERSET_HOME='/e/dev/python/venv/superset-py27-env/Lib/site-packages/'
+SUPERSET_HOME='/e/dev/python/venv/superset-py27-env/'
 GITHUB_HOME='/e/development/versionManager/git/github/'
 OSCHINA_HOME='/e/development/versionManager/git/oschina/'
 WORKSPACE_HOME='/e/workspaces/python.ws/'
@@ -19,6 +19,12 @@ function cd_mydir(){
     $CD_CMD /e  
     if [ $1x = "superset"x ];  then      
         $CD_CMD $SUPERSET_HOME
+    elif [ $1x = "activate"x ];  then      
+        $CD_CMD $SUPERSET_HOME
+        source  "$SUPERSET_HOME""/Scripts/activate"
+    elif [ $1x = "lib"x ];  then      
+        $CD_CMD $SUPERSET_HOME"Lib/site-packages/"
+
     elif [ $1x = "github"x ];  then      
         $CD_CMD $GITHUB_HOME
     elif [ $1x = "oschina"x ];  then
