@@ -9,7 +9,9 @@
 
 CD_CMD=cd
 
-# E:\dev\python\venv\superset-py27-env\Lib\site-packages
+# windows
+# SUPERSET_HOME='E:\dev\python\venv\superset-py27-env\Lib\site-packages'
+# linux
 SUPERSET_HOME='/e/dev/python/venv/superset-py27-env/'
 GITHUB_HOME='/e/development/versionManager/git/github/'
 OSCHINA_HOME='/e/development/versionManager/git/oschina/'
