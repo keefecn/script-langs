@@ -1,0 +1,2 @@
+#recursive-include superset/data *
+recursive-exclude tests *
