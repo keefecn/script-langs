@@ -19,11 +19,10 @@ import termios
 import locale
 from pprint import *
 
-
 if sys.version_info[:2] < (2, 4):
+
     def set(l):
         return dict(zip(l, [None, ] * len(l))).keys()
-
 
 refresh_time_span = 1
 cmd_stat_switch = 0
@@ -58,7 +57,7 @@ class monitor_socket:
         try:
             self.s.close()
 
-        except socket.error, e:
+        except socket.error as e:
             print(e)
             return
 
@@ -67,7 +66,7 @@ class monitor_socket:
         try:
             command += "\n"
             self.s.sendall(command)
-        except socket.error, e:
+        except socket.error as e:
             print(e)
             return
 
@@ -78,7 +77,7 @@ class monitor_socket:
             while(1):
                 recv += self.s.recv(1024)
                 if recv == "":
-                    print "\nerror: EOF of socket."
+                    print ("\nerror: EOF of socket.")
                     self.close_server()
                     break
                 if recv.endswith("\r\n") == True:
@@ -86,14 +85,14 @@ class monitor_socket:
 
             return recv
 
-        except socket.error, e:
-            print e
+        except socket.error as e:
+            print(e)
             return
-
 
 #
 # process the commands and FD selection
 #
+
 
 class monitor_main:
 
@@ -133,7 +132,7 @@ class monitor_main:
                     else:
                         host = option
 
-            print host
+            print (host)
 
             if host == "":
                 host = "localhost"
@@ -147,8 +146,8 @@ class monitor_main:
 
             monitor_main.static_socket = self.my_socket
 
-        except Exception, e:
-            print "Syntax Error.", e, "\n"
+        except Exception as e:
+            print ("Syntax Error.", e)
             self.show_help_message()
             sys.exit()
 
@@ -188,10 +187,10 @@ class monitor_main:
                     data = self.my_socket.read_data()
                     self.display(command, data)
 
-            except Exception, e:
+            except Exception as e:
                 import traceback
                 traceback.print_exc()
-                print "\nstandard input or socket error."
+                print ("\nstandard input or socket error.")
                 self.cmd_analysis("quit")
 
     def cmd_analysis(self, command):
@@ -217,9 +216,9 @@ class monitor_main:
                         if option in corrent_cmd:
                             break
                         else:
-                            print "bad parameter. '%s' not support.\n" \
+                            print ("bad parameter. '%s' not support.\n" \
                                 "please refer to help by typing 'help'.\n" % (
-                                    option)
+                                    option))
                             self.show_prompt = 1
                             return
 
@@ -230,9 +229,9 @@ class monitor_main:
                     time_span = time_span.split(" ")
                     refresh_time_span = string.atoi(time_span[1], 0)
 
-            except Exception, e:
-                print "missing parameter.\n" \
-                    "please refer to help by typing 'help'.\n"
+            except Exception as e:
+                print ("missing parameter.\n" \
+                    "please refer to help by typing 'help'.\n")
                 self.show_prompt = 1
                 return
 
@@ -250,14 +249,14 @@ class monitor_main:
 
         if command.find("quit") != -1 or command.find("q") != -1:
 
-            print "closing ..."
+            print ("closing ...")
             # close the tread switch
             cmd_stat_switch = 0
             # wait for other threads
             if cmd_stat().isAlive == True:
                 cmd_stat().join()
 
-            print "exited."
+            print ("exited.")
             self.my_socket.close_server()
             sys.exit()
 
@@ -265,15 +264,10 @@ class monitor_main:
         self.my_socket.send_data(command)
 
     def print_stat(self, dest_str):
-
-        # print dest_str
-        # print '*' * 80
+        print ('*' * 80)
 
         # transform 'MNT_GROUP_STAT'
         dest_str = str2ptg(dest_str)
-
-        # print dest_str
-        # print '*' * 80
 
         # parse the string
         dest_str = dest_str.split("|")[:-1]
@@ -294,10 +288,8 @@ class monitor_main:
                 new_module_types.append(each_type)
             history = each_type
 
-        # print new_module_types
-
         for exclusive_type in new_module_types:
-            print "[%s]" % exclusive_type
+            print ("[%s]" % exclusive_type)
             value_of_type = []
             for item in dest_str:
                 if exclusive_type in item:
@@ -307,7 +299,7 @@ class monitor_main:
 
             self.print_stat_sub_proc(value_of_type)
 
-        print "-" * 80
+        print ("-" * 80)
 
     def print_stat_sub_proc(self, dest_str):
 
@@ -332,8 +324,6 @@ class monitor_main:
                 digital_str_split = zip(digital_str, digital_str[1:] + [0, ])
                 digital_str_split.reverse()
 
-                # print digital_str_split
-
                 for x, y in digital_str_split:
                     temp = word[1][y: x]
                     if temp != "":
@@ -342,10 +332,7 @@ class monitor_main:
                 # print digital_str_array
                 word[1] = ','.join(digital_str_array)
 
-            #
             # add digital group symbol in the digital number end
-            #
-
             temp_word1 = word[1]
 
             # check the differece
@@ -376,7 +363,6 @@ class monitor_main:
                         temp_string += '%-19s' % (locale.format('%s',
                                                                 each_value, True))
 
-                    # print "len=",len(dest_str),"n=",n
                     if n % 4 == 0 or n == len(dest_str):
                         temp_string += "\n"
 
@@ -386,7 +372,7 @@ class monitor_main:
                 if m == len(dest_str):
                     temp_string += "\n"
         # print "===="
-        print temp_string,
+        print (temp_string,)
 
     def print_list(self, dest_str):
 
@@ -409,11 +395,11 @@ class monitor_main:
             temp_string += '%20s  ->  %-20s\n' % (item[0], item[1])
         temp_string += "\n"
 
-        print temp_string,
+        print (temp_string,)
 
     def print_default(self, dest_str):
 
-        print dest_str
+        print(dest_str)
 
     def display(self, command, data):
         global cmd_stat_switch
@@ -421,7 +407,7 @@ class monitor_main:
         if command.find("stat") != -1:
             if data == "\r\n\r\n":
                 cmd_stat_switch = 0
-                print "stat: no data matched.\n"
+                print ("stat: no data matched.\n")
             else:
                 self.print_stat(data)
 
@@ -437,7 +423,7 @@ class monitor_main:
         cmd_stat_switch = 0
 
     def show_help_message(self):
-        print "Usage: monitor [host[:port]] [options]\n" \
+        print ("Usage: monitor [host[:port]] [options]\n" \
             "       host: the monitor server IP. the default host is localhost.\n" \
             "       port: the monitor server port. the default port is 22222.\n" \
             "options: \n" \
@@ -452,7 +438,7 @@ class monitor_main:
             "  list         List the items registered.\n" \
             "  help         Show this help in runtime.\n" \
             "  stop         Stop the remote monitor service. And you CAN NOT connect again!\n" \
-            "  quit         Quit this client.\n"
+            "  quit         Quit this client.\n")
 
 
 #
@@ -480,7 +466,6 @@ class cmd_stat(threading.Thread):
             if cmd_stat_switch == 0:
                 return
 
-
 # Copyright (C) 2008 Konstantin Lepa <konstantin.lepa@gmail.com>.
 #
 # This file is part of termcolor.
@@ -498,8 +483,8 @@ class cmd_stat(threading.Thread):
 # You should have received a copy of the GNU General Public License
 # along with termcolor.  If not, see <http://www.gnu.org/licenses/>.
 
-__ALL__ = ['colored']
 
+__ALL__ = ['colored']
 
 attributes = dict(
     zip([
@@ -517,7 +502,6 @@ attributes = dict(
 )
 del attributes['']
 
-
 highlights = dict(
     zip([
         'on_grey',
@@ -532,7 +516,6 @@ highlights = dict(
         range(40, 48)
         )
 )
-
 
 colors = dict(
     zip([
@@ -574,7 +557,6 @@ def colored(text, color=None, on_color=None, attrs=None):
 
     return text
 
-
 #
 # transform xxx||xxx||vvv|vvv| to fraction form
 #
@@ -612,14 +594,10 @@ def str2ptg(str):
     for item in gs:
         modules.append(item[0])
 
-    # print "====",modules,"========"
-
     gs = dict(gs)
 
     # grs.sort(key = lambda x: ','.join([x[1],x[0]]))
     grs.sort(lambda x, y: cmp(','.join([x[1], x[0]]), ','.join([y[1], y[0]])))
-
-    # print grs
 
     # only show 'busy' field
     grs_filtered = []
@@ -629,8 +607,6 @@ def str2ptg(str):
 
     grs = grs_filtered
 
-    # print grs
-
     for item in modules:
         item_found = 0
         for item_grs in grs:
@@ -638,8 +614,6 @@ def str2ptg(str):
             if item_grs[1] == item:
                 item_found = 1
                 break
-
-        # print "--->", item_found, item
 
         if item_found == 0:
             grs_item = []
@@ -654,8 +628,6 @@ def str2ptg(str):
         else:
             return ""
 
-    # print grs
-
     grs = ['%s/total,%d/%d,%s' % (rname[r], n, gs[g], g) for r, g, n in grs]
 
     if len(oth) == 0:
@@ -663,8 +635,8 @@ def str2ptg(str):
     else:
         return '|'.join(grs) + '|' + '|'.join(oth)
 
-
 #
+
 
 if __name__ == "__main__":
     locale.setlocale(locale.LC_ALL, "")

@@ -84,4 +84,4 @@ class Shop:
 if __name__ == "__main__":
     # 导入的需要自身的文件名，如本文件名python_doc
     import python_doc
-    print help(python_doc)
+    print (help(python_doc))

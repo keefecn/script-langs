@@ -20,10 +20,11 @@ import re
 def findPart(regex, text, name):
     res = re.findall(regex, text)
     if res:
-        print "There are %d %s parts:\n" % (len(res), name)
+        print ("There are %d %s parts:\n" % (len(res), name))
         for r in res:
-            print '\t', r
+            print ('\t', r)
         print
+
 
 # sample is utf8 by default.
 sample = 'en: Regular expression is a powerful tool for manipulating text. \
@@ -43,8 +44,7 @@ findPart(r"[\x80-\xff]+", sample, "non-ascii")
 usample = unicode(sample, 'utf8')
 
 # let's look its raw representation under the hood:
-print "the raw unicode string is:\n", repr(usample)
-print
+print ("the raw unicode string is:\n", repr(usample))
 
 # get each language parts:
 findPart(u"[\u4e00-\u9fa5]+", usample, "unicode chinese")

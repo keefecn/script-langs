@@ -1,5 +1,7 @@
 # common
 log
+.project
+.pydevproject
 
 # python
 *.pyc

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+# coding:utf8
 import time
 
 
@@ -45,9 +45,12 @@ def t(f, n):
         dic2 = {'A': 'aa', 'B': 'bb', 'C': 'cc'}
         f(dic1, dic2)
     et = time.time()
-    print '%s cost:%s' % (n, et - st)
+    print ('%s cost:%s' % (n, et - st))
+
 
 t(f1, 'f1')
+
+
 t(f2, 'f2')
 t(f3, 'f3')
 t(f4, 'f4')
