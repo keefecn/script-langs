@@ -8,12 +8,27 @@ import os
 import json
 
 from setuptools import find_packages, setup
+from setuptools import Command
+
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 INSTALL_PACKAGES = open(os.path.join(BASE_DIR, "requirements.txt")).read().splitlines()
 
 with open(os.path.join(BASE_DIR, "README.md"), encoding="utf-8") as f:
     README = f.read()
+
+
+class InstallCommand(Command):  # 自定义命令
+    description = "Installs the foo."
+    user_options = [
+        ('foo=', None, 'Specify the foo to bar.'),
+    ]
+    def initialize_options(self):
+        self.foo = None
+    def finalize_options(self):
+        assert self.foo in (None, 'myFoo', 'myFoo2'), 'Invalid foo!'
+    def run(self):
+        install_all_the_things()
 
 setup(
     name="python-demo",
@@ -52,4 +67,7 @@ setup(
     ],
     python_requires=">=3",
     entry_points={"console_scripts": []},
+    cmdclass={  # 自定义命令
+        'install': InstallCommand,
+    }
 )
