@@ -1,6 +1,6 @@
 
 ## install
-``` install
+``` shell
 python3 -m pip install --user --upgrade setuptools wheel twine
 python setup.py sdist
 twine check dist/*
@@ -8,7 +8,8 @@ twine check dist/*
 
 ## pypi
 ### 配置文件 ~/.pypirc
-``` ~/.pypirc
+``` shell
+~/.pypirc
 [distutils]
 index-servers = localhost pypi
  
@@ -24,7 +25,7 @@ password:
 ```
 
 ### 上传到pypi
-```
+``` shell
 # 上传到pypi官服 https://upload.pypi.org/legacy/  bdist_wheel~whl包
 python setup.py bdist_wheel upload 
 或者
