@@ -18,6 +18,7 @@ setup(
     install_requires=['click', 'tinydb', 'six', 'pytest', 'pytest-mock'],
     tests_require=['pytest', 'pytest-mock'],
     extras_require={'mongo': 'pymongo'},
+    # test_suite="tests",
 
     entry_points={
         'console_scripts': [
