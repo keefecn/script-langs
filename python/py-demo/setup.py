@@ -57,6 +57,7 @@ setup(
         "pytest-cov",
         "pytest-sugar"
     ],
+    test_suite="tests",
     author="wuqifu",
     author_email="wuqifu@gmail.com",
     keywords=["python-demo", ],
