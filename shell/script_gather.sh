@@ -10,7 +10,17 @@
 # Copyright (C) 2006 Denny
 # ----------------------------------------------------------------------
 
-### 1: replace space line
+### echo -e 打印特殊字符
+echo -e '\n'
+### 变量拼接，输出: str1-str2-str3
+s1='str1'
+s2='str2'
+s3=3
+echo $s1-$s2-str$s3
+echo ${s1}-${s2}-str${s3}
+echo ${s1}'-'${s2}'-str'${s3}
+
+### replace space line
 sed  -i '/^$/d'  filename
 cat $1 |grep ^[^$]
 
@@ -20,7 +30,7 @@ find . -regex '.*\.\(c\|h\|min\|cpp\|py\|php\)'  | xargs wc -l
 # trim space line
 find /a -name "*.c" |xargs cat|grep -v ^$|wc -l
 
-###1: find file 
+### find file 
 # syntax: ind pathname -options [-print -exec -ok ...]
 # syntax: grep [options] PATTERN [FILE...]
 # shell flag: {} \;
@@ -112,3 +122,7 @@ diff -ruNa linux-$version_num-origin/ linux-$version_num >linux-$version_num.pat
 # $# total varibale	$? status variable 
 # << input stream separator 
 ##########################################
+
+
+# 打印 重复字符
+for i in `seq 1 10`;do printf "%-${i}s\n" "*" | sed 's/\s/*/g';done
