@@ -6,6 +6,8 @@
 [core]
     quotepath = false
     excludesfile = ~/.gitignore_global
+    autocrlf = false
+    longpaths = true
 [gui]
     encoding = utf-8
 [i18n]
