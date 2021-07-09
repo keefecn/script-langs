@@ -9,7 +9,7 @@
 " add by keefe, freq used
 set nu
 
-set tabstop 4
+set tabstop=4
 syntax enable
 syntax on
 
