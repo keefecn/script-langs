@@ -2,6 +2,7 @@
 log
 .project
 .pydevproject
+*.gz
 
 # python
 *.pyc
