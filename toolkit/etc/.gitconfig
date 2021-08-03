@@ -1,8 +1,6 @@
 [user]
     name = Keefe Wu
     email = wuqifu@gmail.com
-[denny]
-    wu = denny@lenovo.desktop
 [core]
     quotepath = false
     excludesfile = ~/.gitignore_global
