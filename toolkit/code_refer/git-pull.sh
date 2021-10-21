@@ -26,9 +26,9 @@ do_pull()
         cd $subdir;
         # check if changed from git status
         ret1=`git status`;
-        #ret11=`echo $ret1 | grep -E "ahead of|not staged"`;  #en
-        ret11=`echo $ret1 | grep -E "要提交的变更"`;  #cn:gbk
-        if [ -n "$ret11" ] ; then
+        ret11=`echo $ret1 | grep -E "ahead of|not staged"`;  #en
+        ret12=`echo $ret1 | grep -E "变更"`;  #cn:gbk
+        if [[ -n "$ret11" || $ret12 ]] ; then
             git status;
         fi
         git pull;

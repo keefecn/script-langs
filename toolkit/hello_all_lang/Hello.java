@@ -1,7 +1,8 @@
 /*
-cmd: java javac
-javac Hello.java
-java Hello
+@file: Hello.java
+@cmd: java javac
+ $javac Hello.java
+ $java Hello
 */
 
 public class Hello {
