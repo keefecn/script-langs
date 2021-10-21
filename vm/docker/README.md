@@ -89,9 +89,11 @@ $ docker images
 
 
 ### 镜像使用
+see  ./docker_run.sh
 
 * ubuntu
 * reids
 * nginx
 * mysql
 * php
+

@@ -3,7 +3,6 @@
 
 ## intro
 Parse command-line options
-参数可分为二种：optional argument（选项参数，以-开头），positional argument（位置参数）
 
 argparse 参数解析
 * argc 参数个数

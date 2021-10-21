@@ -39,15 +39,7 @@ find $dir -name "install_manifest.txt" -exec rm -rf {} \;
 #find $dir -name ".svn" -exec rm -rf {} \;
 
 # c/c++
-echo -e "\nc++ rm..."
 find $dir -name ".o" -exec rm -rf {} \;
 
 # python
-echo -e "\npython rm..."
-dirs='*.pyc *.egg-info __pycache__'
-for subdir in $dirs
-do
-    cmd="find $dir -iname '$subdir' |xargs rm -rf"
-    echo -e "$cmd\n"
-    `find $dir -iname '$subdir' |xargs rm -rf`
-done
+find $dir -iname "*.pyc" |xargs rm

@@ -10,17 +10,7 @@
 # Copyright (C) 2006 Denny
 # ----------------------------------------------------------------------
 
-### echo -e 打印特殊字符
-echo -e '\n'
-### 变量拼接，输出: str1-str2-str3
-s1='str1'
-s2='str2'
-s3=3
-echo $s1-$s2-str$s3
-echo ${s1}-${s2}-str${s3}
-echo ${s1}'-'${s2}'-str'${s3}
-
-### replace space line
+### 1: replace space line
 sed  -i '/^$/d'  filename
 cat $1 |grep ^[^$]
 
@@ -30,7 +20,7 @@ find . -regex '.*\.\(c\|h\|min\|cpp\|py\|php\)'  | xargs wc -l
 # trim space line
 find /a -name "*.c" |xargs cat|grep -v ^$|wc -l
 
-### find file 
+###1: find file 
 # syntax: ind pathname -options [-print -exec -ok ...]
 # syntax: grep [options] PATTERN [FILE...]
 # shell flag: {} \;
@@ -48,8 +38,9 @@ find -iname "*.cpp" |xargs grep "setLinger"
 find -iname "*.cpp" -exec grep "setLinger" {} \;
 grep -rl "setLinger" .
 ## Eg: replace str in some file, oldstr-->newstr 
-sed -i "s/oldstr/newstr/g" `grep "newstr" -rl dirname`
+sed -i "s/oldstr/newstr/g" `grep "oldstr" -rl dirname`
 grep "oldstr" -rl dirname | xargs sed -i "s/oldstr/newstr/g" 
+# discard, which need perl support
 find -name 'filename' | xargs perl -pi -e 's|oldstr|newstr|g'
 
 ## Eg: find exclude directory: -path [path] -prune
@@ -122,7 +113,3 @@ diff -ruNa linux-$version_num-origin/ linux-$version_num >linux-$version_num.pat
 # $# total varibale	$? status variable 
 # << input stream separator 
 ##########################################
-
-
-# 打印 重复字符
-for i in `seq 1 10`;do printf "%-${i}s\n" "*" | sed 's/\s/*/g';done

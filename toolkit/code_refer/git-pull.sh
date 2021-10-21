@@ -6,7 +6,14 @@
 # note: git pull multiple projects from remote
 # ----------------------------------------------------------------------
 
-SUBDIRS=`ls -d */ | grep -v 'bin'`
+DIR=*/
+if [ $# -gt 0 ]; then
+    DIR=$1/*/
+fi
+echo $#
+echo "13."$DIR
+
+SUBDIRS=`ls -d $DIR | grep -v 'bin'`
 #SUBDIRS='topicspider topicspider-design www'
 
 do_pull()
@@ -15,12 +22,13 @@ do_pull()
     do
         echo ''
         echo '--'$subdir
-        #( cd $subdir; git status && git pull )
+        #( cd $subdir; git status && git pull & cd .. )
         cd $subdir;
+        # check if changed from git status
         ret1=`git status`;
-        ret11=`echo $ret1 | grep -E "ahead of|not staged"`;
+        #ret11=`echo $ret1 | grep -E "ahead of|not staged"`;  #en
+        ret11=`echo $ret1 | grep -E "要提交的变更"`;  #cn:gbk
         if [ -n "$ret11" ] ; then
-            #echo $ret1;
             git status;
         fi
         git pull;

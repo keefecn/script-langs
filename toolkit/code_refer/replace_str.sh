@@ -21,5 +21,5 @@ $DIR=$3
 
 replace_word()
 {
-    sed -i "s/$OLDSTR/$NEWSTR/g" `grep -rl "STRA" $DIR`
+    sed -i "s/$OLDSTR/$NEWSTR/g" `grep -rl "$OLDSTR" $DIR`
 }

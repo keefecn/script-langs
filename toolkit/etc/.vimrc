@@ -8,19 +8,17 @@
 
 " add by keefe, freq used
 set nu
-
 set tabstop=4
+set expandtab
+
 syntax enable
 syntax on
-
 
 " for encoding
 filetype on
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
-
-
 
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.

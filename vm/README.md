@@ -11,7 +11,9 @@
 * 配置路径：~/.vagrant.d/
 * 配置文件：vagrantfile
 
+
 ## docker
 
-* 配置文件：dockerfile
+* docker配置文件：Dockerfile  
+* compose配置文件: xx.docker-compose.yml
 
