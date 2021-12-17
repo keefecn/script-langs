@@ -14,6 +14,7 @@ if [[ $NAME != *env* ]]; then
     exit 1;
 fi
 
+# | xargs -I {} kill -9 {}
 ID=`ps -ef | grep "$NAME" | grep -v "grep" | awk '{print $2}'`
 echo $ID
 echo "---------------kill start"
