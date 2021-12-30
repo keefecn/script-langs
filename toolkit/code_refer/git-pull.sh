@@ -11,7 +11,7 @@ if [ $# -gt 0 ]; then
     DIR=$1/*/
 fi
 echo $#
-echo "13."$DIR
+echo "DIR="$DIR
 
 SUBDIRS=`ls -d $DIR | grep -v 'bin'`
 #SUBDIRS='topicspider topicspider-design www'
