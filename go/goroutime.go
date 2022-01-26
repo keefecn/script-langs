@@ -17,6 +17,6 @@ func say(s string) {
 }
 
 func main() {
-        go say("world")  // go关键字 make a gorungime thread
+        go say("world")  // go关键字 make a goruntime thread
         say("hello")
 }
