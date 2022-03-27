@@ -27,7 +27,7 @@ do_pull()
         # check if changed from git status
         ret1=`git status`;
         ret11=`echo $ret1 | grep -E "ahead of|not staged"`;  #en
-        ret12=`echo $ret1 | grep -E "变更"`;  #cn:gbk
+        ret12=`echo $ret1 | grep -E "提交"`;  #cn:gbk 提交 变更
         if [[ -n "$ret11" || $ret12 ]] ; then
             git status;
         fi
