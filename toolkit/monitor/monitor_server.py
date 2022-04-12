@@ -1,1 +1,1 @@
-.. / .. / python / monitor_server.py
+../../python/utils/monitor_server.py

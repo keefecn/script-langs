@@ -9,8 +9,7 @@
 # imp: /proc/stat    = 100   *（user   +   nice   +   system）/（user   +   nice   +   system   +   idle）    
 idle=`/usr/bin/mpstat 1 1 | /bin/grep Average | awk '{print $9}'`
 used=`echo "100 - $idle" | /usr/bin/bc -l -s` 
-echo $used 
-echo $idle
+echo -e "cpu: used=$used, idle=$idle\n"
 
 # disk.sh
 # tools: df
@@ -24,7 +23,8 @@ iostat -x /dev/sda|grep sda |awk '{print $9}'
 # load.sh
 # tools: uptime
 # imp: /proc/loadavg
-uptime |awk -Faverage '{print $2}'|awk '{print $2}'|awk -F, '{print $1}'
+load_ave=`uptime |awk -Faverage '{print $2}'|awk '{print $2}'|awk -F, '{print $1}'`
+echo -e "load_average=$load_ave"
 
 # mem.sh
 # tools: free, vmstat
@@ -38,14 +38,16 @@ uptime |awk -Faverage '{print $2}'|awk '{print $2}'|awk -F, '{print $1}'
 
 # netconn.sh
 # tools: netstat
-tem=`netstat -tun|wc -l`
-echo $tem
+tcp_conns=`netstat -tun|wc -l`
+echo -e "\ntcp_conns=$tcp_conns"
 
 # tcpstate.sh
 # tools: netstat
+echo -e "\nnetstat..."
 netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
 
 # ulimit.sh
 # tools: ulimit, lsof
 # imp:  /etc/security/limits.conf   /proc/sys/fs/file-max
+echo -e "\nulimit -a..."
 ulimit -a

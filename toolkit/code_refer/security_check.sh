@@ -41,16 +41,21 @@ check_db()
 # check c/cpp
 check_c()
 {
+    echo "check c..."
 }
 
 # check java
 check_java()
 {
+    echo "check java..."
+
 }
 
 # check python
 check_python()
 {
+    echo "check python..."
+
 }
 
 check_db

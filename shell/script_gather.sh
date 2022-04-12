@@ -10,6 +10,7 @@
 # Copyright (C) 2006 Denny
 # ----------------------------------------------------------------------
 
+#### find + sed + awk 
 ### 1: replace space line
 sed  -i '/^$/d'  filename
 cat $1 |grep ^[^$]
@@ -66,9 +67,6 @@ find . -name "*.txt"|xargs -I {} cp {} {}.bak
 
 
 ######## some usefull tools #############################
-#1 kill process by name
-ps -ef |grep java |grep -v grep |awk '{print $2}' |xargs kill -9  
- 
 #2 start 1-n process
 if [ $# -lt "4" ]
 then
@@ -100,6 +98,10 @@ diff -ruNa linux-$version_num-origin/ linux-$version_num >linux-$version_num.pat
 
 #5 test
  for i in `seq 1 100`; do touch $i.txt; done
+
+# get random number
+echo $RANDOM
+
 
 ##########################################
 ## shell symbol 
