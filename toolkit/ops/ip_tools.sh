@@ -1,5 +1,8 @@
 #!/bin/bash
 # get out ip 
+curl ipinfo.io
+curl cip.cc
+curl ident.me
 curl checkip.amazonaws.com
 
 # get inner ip
