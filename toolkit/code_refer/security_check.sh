@@ -30,6 +30,7 @@ replace_word()
 # check db passwd
 check_db()
 {
+    echo "check db..."
     DB_KEYS='connect root'
     for word in $DB_KEYS
     do

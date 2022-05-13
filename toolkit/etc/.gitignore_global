@@ -10,7 +10,8 @@ _sites/
 .settings
 .idea/
 *.dot
-
+.DS_store
+.vscode/
 
 # word
 ~$*

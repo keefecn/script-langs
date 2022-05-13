@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python",
+            "type": "python",
+            "request": "launch",
+            "python": "${command:python.interpreterPath}",
+            "program": "${file}",
+            "cwd": "${workspaceRoot}",
+            "console": "integratedTerminal",            
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}"
+            },
+            "envFile": "${workspaceRoot}/.env"
+        }
+    ]
+}
