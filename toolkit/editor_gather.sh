@@ -36,7 +36,7 @@ sed -i "s/stringA/stringB/g" `grep -rl "stringA" Directory`
 
 
 ###3: rename filename
-# method1: rename : $ --add subfix
+# method1: rename 
 rename "s/$/\.txt/" *  
 rename "s/\.html/\.php/" *  
 # method2: mv
